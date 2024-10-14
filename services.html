@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAC Buddy - Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome CSS -->
+    <style>
+        .service-img {
+            width: 200px; /* Set a fixed width */
+            height: 150px; /* Set a fixed height */
+            object-fit: cover; /* Ensure the images cover the area without stretching */
+            border-radius: 10px; /* Rounded corners for images */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+        .service-card {
+            margin-bottom: 30px; /* Spacing between service cards */
+            text-align: center; /* Center text under images */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-tools"></i> MAC Buddy</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" id="home-link"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="signup.html" id="signup-link"><i class="fas fa-user-plus"></i> Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html" id="login-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    </li>
+                </ul>
+                <!-- Language Dropdown -->
+                <select class="form-select ms-3" id="language-select" onchange="updateLanguage()">
+                    <option selected disabled>Choose Language</option>
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Section -->
+    <div class="container my-5">
+        <h2 class="text-center" id="services-title"> Our Services</h2>
+        <div class="row">
+            <div class="col-md-4 service-card">
+                <img src="repair.jpg" alt="Two-wheeler Repair" class="service-img mb-3" />
+                <h4 id="repair-title"><i class="fas fa-wrench"></i> Two-wheeler Repair</h4>
+                <p id="repair-description">Expert repair services for your two-wheeler.</p>
+            </div>
+            <div class="col-md-4 service-card">
+                <img src="maintain.jpg" alt="Maintenance" class="service-img mb-3" />
+                <h4 id="maintain-title"><i class="fas fa-tools"></i> Maintenance</h4>
+                <p id="maintain-description">Regular maintenance to keep your vehicle in top shape.</p>
+            </div>
+            <div class="col-md-4 service-card">
+                <img src="pick-drop.jpg" alt="Pickup & Drop Service" class="service-img mb-3" />
+                <h4 id="pickup-drop-title"><i class="fas fa-truck-pickup"></i> Pickup & Drop Service</h4>
+                <p id="pickup-drop-description">Convenient pickup and drop services for your vehicle.</p>
+            </div>
+            <div class="col-md-4 service-card">
+                <img src="spareparts.jpeg" alt="Spare Parts Replacement" class="service-img mb-3" />
+                <h4 id="spareparts-title"><i class="fas fa-cogs"></i> Spare Parts Replacement</h4>
+                <p id="spareparts-description">High-quality spare parts for your two-wheeler.</p>
+            </div>
+            <div class="col-md-4 service-card">
+                <img src="oil.jpg" alt="Oil Change" class="service-img mb-3" />
+                <h4 id="oil-change-title"><i class="fas fa-oil-can"></i> Oil Change</h4>
+                <p id="oil-change-description">Get your oil changed for optimal engine performance.</p>
+            </div>
+            <div class="col-md-4 service-card">
+                <img src="battery.jpg" alt="Battery Replacement" class="service-img mb-3" />
+                <h4 id="battery-replacement-title"><i class="fas fa-battery-half"></i> Battery Replacement</h4>
+                <p id="battery-replacement-description">Reliable battery replacement services.</p>
+            </div>
+                </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-3">
+        <p id="footer-text"><i class="fas fa-address-book"></i> Contact Us | Surendranagar Two-Wheeler Mechanic Association</p>
+        <p>Made with ❤️ by Urvi</p>
+    </footer>
+
+    <!-- JavaScript to handle language selection -->
+    <script>
+      function updateLanguage() {
+    const language = document.getElementById('language-select').value;
+
+    if (language === "Hindi") {
+        document.getElementById('home-link').innerText = "मुख्य पृष्ठ";
+        document.getElementById('signup-link').innerText = "साइन अप करें";
+        document.getElementById('login-link').innerText = "लॉग इन करें";
+        document.getElementById('services-title').innerHTML =" हमारी सेवाएँ";
+
+        // Update service titles and descriptions
+        const serviceTitles = [
+            { id: 'repair-title', text: "<i class='fas fa-wrench'></i> दो पहिया मरम्मत" },
+            { id: 'maintain-title', text: "<i class='fas fa-tools'></i> रखरखाव" },
+            { id: 'pickup-drop-title', text: "<i class='fas fa-truck-pickup'></i> पिकअप और ड्रॉप सेवा" },
+            { id: 'spareparts-title', text: "<i class='fas fa-cogs'></i> स्पेयर पार्ट्स प्रतिस्थापन" },
+            { id: 'oil-change-title', text: "<i class='fas fa-oil-can'></i> तेल परिवर्तन" },
+            { id: 'battery-replacement-title', text: "<i class='fas fa-battery-half'></i> बैटरी प्रतिस्थापन" },
+        ];
+
+        const serviceDescriptions = [
+            { id: 'repair-description', text: "आपके दो पहिया वाहन के लिए विशेषज्ञ मरम्मत सेवाएँ।" },
+            { id: 'maintain-description', text: "आपके वाहन को सर्वोत्तम स्थिति में रखने के लिए नियमित रखरखाव।" },
+            { id: 'pickup-drop-description', text: "आपके वाहन के लिए सुविधाजनक पिकअप और ड्रॉप सेवाएँ।" },
+            { id: 'spareparts-description', text: "आपके दो पहिया वाहन के लिए उच्च गुणवत्ता वाले स्पेयर पार्ट्स।" },
+            { id: 'oil-change-description', text: "इंजन के सर्वोत्तम प्रदर्शन के लिए आपका तेल बदलें।" },
+            { id: 'battery-replacement-description', text: "विश्वसनीय बैटरी प्रतिस्थापन सेवाएँ।" },
+        ];
+
+        // Update titles and descriptions
+        serviceTitles.forEach(service => {
+            document.getElementById(service.id).innerHTML = service.text; // Change to innerHTML
+        });
+
+        serviceDescriptions.forEach(service => {
+            document.getElementById(service.id).innerText = service.text; // Keep innerText
+        });
+
+        document.getElementById('footer-text').innerHTML = "<i class='fas fa-address-book'></i> संपर्क करें | सुरेन्द्रनगर दोपहिया मैकेनिक संघ";
+    } else {
+        document.getElementById('home-link').innerText = "Home";
+        document.getElementById('signup-link').innerText = "Sign Up";
+        document.getElementById('login-link').innerText = "Login";
+        document.getElementById('services-title').innerHTML = "<i class='fas fa-cogs'></i> Our Services";
+
+        // Reset service titles and descriptions
+        const serviceTitles = [
+            { id: 'repair-title', text: "<i class='fas fa-wrench'></i> Two-wheeler Repair" },
+            { id: 'maintain-title', text: "<i class='fas fa-tools'></i> Maintenance" },
+            { id: 'pickup-drop-title', text: "<i class='fas fa-truck-pickup'></i> Pickup & Drop Service" },
+            { id: 'spareparts-title', text: "<i class='fas fa-cogs'></i> Spare Parts Replacement" },
+            { id: 'oil-change-title', text: "<i class='fas fa-oil-can'></i> Oil Change" },
+            { id: 'battery-replacement-title', text: "<i class='fas fa-battery-half'></i> Battery Replacement" },
+        ];
+
+        const serviceDescriptions = [
+            { id: 'repair-description', text: "Expert repair services for your two-wheeler." },
+            { id: 'maintain-description', text: "Regular maintenance to keep your vehicle in top shape." },
+            { id: 'pickup-drop-description', text: "Convenient pickup and drop services for your vehicle." },
+            { id: 'spareparts-description', text: "High-quality spare parts for your two-wheeler." },
+            { id: 'oil-change-description', text: "Get your oil changed for optimal engine performance." },
+            { id: 'battery-replacement-description', text: "Reliable battery replacement services." },
+        ];
+
+        // Reset titles and descriptions
+        serviceTitles.forEach(service => {
+            document.getElementById(service.id).innerHTML = service.text; // Change to innerHTML
+        });
+
+        serviceDescriptions.forEach(service => {
+            document.getElementById(service.id).innerText = service.text; // Keep innerText
+        });
+
+        document.getElementById('footer-text').innerHTML = "<i class='fas fa-address-book'></i> Contact Us | Surendranagar Two-Wheeler Mechanic Association";
+    }
+}
+
+
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

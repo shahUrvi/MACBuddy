@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAC Buddy - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+@media (max-width: 480px) {
+    .title-text {
+        font-size: 1.5rem;
+    }
+    .navbar a {
+        display: block;
+        margin: 10px 0;
+    }
+}
+/* For tablets */
+@media (max-width: 768px) {
+    .buttons-section {
+        flex-direction: column;
+    }
+}
+    /* Media query for mobile devices */
+@media (max-width: 768px) {
+    .brand-logos {
+        display: none; /* Hide on mobile */
+    }
+}
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-tools icon"></i>MAC Buddy</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html"><i class="fas fa-wrench"></i> Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="booking.html"><i class="fas fa-calendar-check"></i> Booking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                    </li>
+                </ul>
+                <!-- Language Dropdown -->
+                <select class="form-select ms-3" id="language-select" onchange="updateLanguage()">
+                    <option selected disabled>Choose Language</option>
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+    <!-- Main Banner Section -->
+    <header class="text-center">
+        <img src="C:\Users\inspi\OneDrive\Desktop\MACBuddy\mechanic-screw.gif" class="img-fluid banner-image" alt="MAC Buddy Logo">
+        <h1 class="title-text" id="welcome-text">Welcome to MAC Buddy</h1>
+        <p class="subtitle" id="subtitle-text">(Mechanic Assistance Companion)</p>
+        <p class="association" id="association-text">Surendranagar Two-Wheeler Mechanic Association</p>
+    </header>
+    <section class="text-center my-5">
+        <h3>Precision, Abundance, and Transparency – Your Satisfaction, Our Priority</h3>
+    </section>
+    <!-- Buttons Section -->
+    <div class="container text-center my-4 buttons-section">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center mb-3">
+                <!-- Signup and Login Buttons -->
+                <a href="signup.html" class="btn btn-signup me-2">
+                    <i class="icon fas fa-user-plus"></i> Signup
+                </a>
+            
+                <a href="login.html" class="btn btn-login">
+                    <i class="icon fas fa-sign-in-alt"></i> Login
+                </a>
+            </div>
+    
+            <div class="col-12 d-flex justify-content-center">
+                <!-- Separate Section for Mechanic and Admin Login -->
+                <a href="mechanic-login.html" class="btn btn-mechanic me-2">
+                    <i class="icon fas fa-wrench"></i> Mechanic Login
+                </a>
+            
+                <a href="admin-login.html" class="btn btn-admin">
+                    <i class="icon fas fa-user-shield"></i> Admin Login
+                </a>
+            </div>
+        </div>
+        
+        <div class="mt-3">
+            <button type="button" class="btn btn-custom-warning btn-lg" data-bs-toggle="modal" data-bs-target="#termsModal" id="terms-button">Terms & Conditions</button>
+        </div>
+    </div>
+    <!-- Success Message Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Success</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Your action has been submitted successfully!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-custom" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+  <!-- Terms & Conditions Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>It is only for Two Wheelers.</li>
+                        <li>Put your vehicle at your own risk.</li>
+                        <li>Check your vehicle properly before providing it for servicing.</li>
+                        <li>Extra charges will apply for pickup and drop-up services (and for other additional services).</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-custom" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="testimonials text-center my-5 py-5" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-item">
+                            <img src="c1.jpg" class="rounded-circle mb-4" alt="Customer 1" style="width: 100px; height: 100px;">
+                            <blockquote class="blockquote">
+                                <p class="mb-4">"MAC Buddy helped me keep my bike in top condition! The service was quick and efficient."</p>
+                            </blockquote>
+                            <footer class="blockquote-footer">John Doe</footer>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-item">
+                            <img src="c2.jpg" class="rounded-circle mb-4" alt="Customer 2" style="width: 100px; height: 100px;">
+                            <blockquote class="blockquote">
+                                <p class="mb-4">"I trust MAC Buddy for all my bike maintenance needs. The mechanics are highly skilled."</p>
+                            </blockquote>
+                            <footer class="blockquote-footer">Jane Smith</footer>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-item">
+                            <img src="c3.jpg" class="rounded-circle mb-4" alt="Customer 3" style="width: 100px; height: 100px;">
+                            <blockquote class="blockquote">
+                                <p class="mb-4">"The pick-and-drop service is a game-changer for my busy schedule. Highly recommend!"</p>
+                            </blockquote>
+                            <footer class="blockquote-footer">Ravi Patel</footer>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="text-center my-5">
+        <!-- Left-side logos -->
+<div class="brand-logos brand-logos-left">
+    <p style="color: #7a634d; font-weight: bold; text-align: center;">We service:</p>
+    <img src="hero.png" alt="Hero Electric">
+    <img src="ola.png" alt="Ola Electric">
+    <img src="bajaj.png" alt="Bajaj">
+    <img src="tvs.png" alt="TVS">
+</div>
+
+<!-- Right-side logos -->
+<div class="brand-logos brand-logos-right">
+    <p style="color: #7a634d; font-weight: bold; text-align: center;">Brands we trust:</p>
+    <img src="RE.png" alt="Royal Enfield">
+    <img src="honda.png" alt="Suzuki">
+    <img src="ether.png" alt="Yamaha">
+    <img src="suzuki.png" alt="Honda">
+</div>
+
+    </section>
+    <section id="why-macbuddy" class="blog-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose MACBuddy?</h2>
+            <div class="benefits-container">
+                <div class="benefit-item">
+                    <i class="fas fa-tools"></i>
+                    <h3>Convenience</h3>
+                    <p>Get services at your doorstep.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-user-check"></i>
+                    <h3>Expert Mechanics</h3>
+                    <p>Skilled professionals at your service.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Transparent Pricing</h3>
+                    <p>No hidden fees—know the costs upfront.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-star"></i>
+                    <h3>Satisfaction Guaranteed</h3>
+                    <p>Your needs come first with us.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-wrench"></i>
+                    <h3>Comprehensive Services</h3>
+                    <p>From maintenance to repairs, we do it all.</p>
+                </div>
+            </div>
+           
+    </section>
+    <section class="gallery-section">
+        <h2 class="gallery-title">Before and After Gallery</h2>
+        <div class="gallery-container">
+          <div class="gallery-item">
+            <img src="before1.jpg" alt="Before Repair" height="150" width="350" class="gallery-image">
+            <p class="image-caption">Before</p>
+          </div>
+          <div class="gallery-item">
+            <img src="after1.jpg" alt="After Repair"   height="150" width="250" class="gallery-image">
+            <p class="image-caption">After</p>
+          </div>
+          <div class="gallery-item">
+            <img src="before2.png" alt="Before Repair" height="150" width="150" class="gallery-image">
+            <p class="image-caption">Before</p>
+          </div>
+          <div class="gallery-item">
+            <img src="after2.png" alt="After Repair" height="150" width="150" class="gallery-image">
+            <p class="image-caption">After</p>
+          </div>
+        </div>
+      </section>
+      <section class="faq my-5 py-5">
+        <div class="container">
+            <h2 class="section-title" style="color:#7a634d">Frequently Asked Questions</h2>
+            <input type="text" class="form-control my-3" id="faqSearch" placeholder="Search FAQs...">
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fas fa-cogs"></i> What services do you provide?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            We provide a range of mechanic services, including repairs, maintenance, and inspections for two-wheelers.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <i class="fas fa-clock"></i> What are your opening hours?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            We are open from Monday to Saturday, 9 AM to 6 PM.
+                        </div>
+                    </div>
+                </div>
+                <!-- Additional FAQ items... -->
+            </div>
+        </div>
+    </section>
+    
+        
+    <footer id="main-footer" class="text-center py-3">
+    <p>Contact Us | Surendranagar Two-Wheeler Mechanic Association</p><br>
+    <p>Made with ❤️ by Urvi</p>
+</footer>
+
+    <!-- JavaScript to handle language selection -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybZ3+qD+HMQd0UqG2CTZ9LHzHhtxcljW2M+q5z5h0n1gtzzEm" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-4lLX1pU1W5Z2QOdT5AvEkgTbo+4Xbl3cENg1Y1zFGoKN7u/oVIuoFZq6/aOKr1N0" crossorigin="anonymous"></script>
+<script>
+    document.getElementById('faqSearch').addEventListener('keyup', function() {
+    const filter = this.value.toLowerCase();
+    const items = document.querySelectorAll('.accordion-item');
+    
+    items.forEach(item => {
+        const question = item.querySelector('.accordion-button').textContent.toLowerCase();
+        item.style.display = question.includes(filter) ? '' : 'none';
+    });
+});
+
+    function updateLanguage() {
+        const selectedLanguage = document.getElementById("language-select").value;
+        
+        // Hindi translations
+        if (selectedLanguage === "Hindi") {
+            document.getElementById("welcome-text").innerText = "MAC Buddy में आपका स्वागत है";
+            document.getElementById("subtitle-text").innerText = "(मैकेनिक सहायता साथी)";
+            document.getElementById("association-text").innerText = "सुरेन्द्रनगर दो पहिया मैकेनिक संघ";
+            document.querySelector(".text-center h3").innerText = "सटीकता, प्रचुरता और पारदर्शिता - आपकी संतोष, हमारी प्राथमिकता";
+            document.querySelector(".btn-signup").innerHTML = '<i class="icon fas fa-user-plus"></i> साइन अप';
+            document.querySelector(".btn-login").innerHTML = '<i class="icon fas fa-sign-in-alt"></i> लॉग इन';
+            document.querySelector(".btn-mechanic").innerHTML = '<i class="icon fas fa-wrench"></i> मैकेनिक लॉगिन';
+            document.querySelector(".btn-admin").innerHTML = '<i class="icon fas fa-user-shield"></i> व्यवस्थापक लॉगिन';
+            document.getElementById("terms-button").innerText = "शर्तें और शर्तें";
+
+            document.getElementById("successModalLabel").innerText = "सफलता";
+            document.querySelector("#successModal .modal-body").innerText = "आपकी क्रिया सफलतापूर्वक प्रस्तुत की गई है!";
+            document.querySelector("#termsModal .modal-title").innerText = "शर्तें और शर्तें";
+            document.querySelector("#termsModal .modal-body").innerHTML = `
+                <ul>
+                    <li>यह केवल दो पहियों के लिए है।</li>
+                    <li>अपनी गाड़ी को अपने जोखिम पर रखें।</li>
+                    <li>सेवा प्रदान करने से पहले अपनी गाड़ी की अच्छी तरह से जांच करें।</li>
+                    <li>पिकअप और ड्रॉप-अप सेवाओं (और अन्य अतिरिक्त सेवाओं) के लिए अतिरिक्त शुल्क लागू होंगे।</li>
+                </ul>
+            `;
+
+            document.querySelector(".testimonials h2").innerText = "हमारे ग्राहकों का क्या कहना है";
+            document.querySelector("#why-macbuddy .section-title").innerText = "MACBuddy क्यों चुनें?";
+            document.querySelector(".service-trust h2").innerText = "हम सेवा करते हैं और जिस ब्रांड पर हम विश्वास करते हैं";
+            document.querySelectorAll(".benefit-item h3")[0].innerText = "सुविधा";
+            document.querySelectorAll(".benefit-item p")[0].innerText = "आपके दरवाजे पर सेवाएं प्राप्त करें।";
+            document.querySelectorAll(".benefit-item h3")[1].innerText = "विशेषज्ञ मैकेनिक";
+            document.querySelectorAll(".benefit-item p")[1].innerText = "आपकी सेवा के लिए कुशल पेशेवर।";
+            document.querySelectorAll(".benefit-item h3")[2].innerText = "पारदर्शी मूल्य निर्धारण";
+            document.querySelectorAll(".benefit-item p")[2].innerText = "कोई छिपी हुई फीस नहीं - लागत पहले से जानें।";
+            document.querySelectorAll(".benefit-item h3")[3].innerText = "संतोष की गारंटी";
+            document.querySelectorAll(".benefit-item p")[3].innerText = "आपकी आवश्यकताएं हमारे लिए पहले आती हैं।";
+            document.querySelectorAll(".benefit-item h3")[4].innerText = "व्यापक सेवाएं";
+            document.querySelectorAll(".benefit-item p")[4].innerText = "रखरखाव से मरम्मत तक, हम सब कुछ करते हैं।";
+
+            document.querySelector(".gallery-title").innerText = "पहले और बाद की गैलरी";
+            document.querySelector("#faqAccordion .accordion-button").innerText = "आप कौन-सी सेवाएं प्रदान करते हैं?";
+            document.querySelector("#collapseOne .accordion-body").innerText = "हम दो पहिया के लिए मरम्मत, रखरखाव, और निरीक्षण की एक श्रृंखला प्रदान करते हैं।";
+            document.querySelector("#faqAccordion .accordion-item:nth-child(2) .accordion-button").innerText = "आपका उद्घाटन समय क्या है?";
+            document.querySelector("#collapseTwo .accordion-body").innerText = "हम सोमवार से शनिवार, सुबह 9 बजे से शाम 6 बजे तक खुले रहते हैं।";
+
+            document.querySelector("#main-footer p").innerText = "संपर्क करें | सुरेन्द्रनगर दो पहिया मैकेनिक संघ";
+            document.querySelector("#main-footer p:nth-of-type(2)").innerText = "उर्वी द्वारा ❤️ के साथ बनाया गया";
+        } else {
+            // Reset to English
+            document.getElementById("welcome-text").innerText = "Welcome to MAC Buddy";
+            document.getElementById("subtitle-text").innerText = "(Mechanic Assistance Companion)";
+            document.getElementById("association-text").innerText = "Surendranagar Two-Wheeler Mechanic Association";
+            document.querySelector(".text-center h3").innerText = "Precision, Abundance, and Transparency – Your Satisfaction, Our Priority";
+            document.querySelector(".btn-signup").innerHTML = '<i class="icon fas fa-user-plus"></i> Signup';
+            document.querySelector(".btn-login").innerHTML = '<i class="icon fas fa-sign-in-alt"></i> Login';
+            document.querySelector(".btn-mechanic").innerHTML = '<i class="icon fas fa-wrench"></i> Mechanic Login';
+            document.querySelector(".btn-admin").innerHTML = '<i class="icon fas fa-user-shield"></i> Admin Login';
+            document.getElementById("terms-button").innerText = "Terms & Conditions";
+
+            document.getElementById("successModalLabel").innerText = "Success";
+            document.querySelector("#successModal .modal-body").innerText = "Your action has been submitted successfully!";
+            document.querySelector("#termsModal .modal-title").innerText = "Terms and Conditions";
+            document.querySelector("#termsModal .modal-body").innerHTML = `
+                <ul>
+                    <li>It is only for Two Wheelers.</li>
+                    <li>Put your vehicle at your own risk.</li>
+                    <li>Check your vehicle properly before providing it for servicing.</li>
+                    <li>Extra charges will apply for pickup and drop-up services (and for other additional services).</li>
+                </ul>
+            `;
+
+            document.querySelector(".testimonials h2").innerText = "What Our Customers Say";
+            document.querySelector("#why-macbuddy .section-title").innerText = "Why Choose MACBuddy?";
+            document.querySelector(".service-trust h2").innerText = "We Service and Brands We Trust";
+            document.querySelectorAll(".benefit-item h3")[0].innerText = "Convenience";
+            document.querySelectorAll(".benefit-item p")[0].innerText = "Get services at your doorstep.";
+            document.querySelectorAll(".benefit-item h3")[1].innerText = "Expert Mechanics";
+            document.querySelectorAll(".benefit-item p")[1].innerText = "Skilled professionals at your service.";
+            document.querySelectorAll(".benefit-item h3")[2].innerText = "Transparent Pricing";
+            document.querySelectorAll(".benefit-item p")[2].innerText = "No hidden fees—know the costs upfront.";
+            document.querySelectorAll(".benefit-item h3")[3].innerText = "Satisfaction Guaranteed";
+            document.querySelectorAll(".benefit-item p")[3].innerText = "Your needs come first with us.";
+            document.querySelectorAll(".benefit-item h3")[4].innerText = "Comprehensive Services";
+            document.querySelectorAll(".benefit-item p")[4].innerText = "From maintenance to repairs, we do it all.";
+
+            document.querySelector(".gallery-title").innerText = "Before and After Gallery";
+            document.querySelector("#faqAccordion .accordion-button").innerText = "What services do you provide?";
+            document.querySelector("#collapseOne .accordion-body").innerText = "We provide a range of mechanic services, including repairs, maintenance, and inspections for two-wheelers.";
+            document.querySelector("#faqAccordion .accordion-item:nth-child(2) .accordion-button").innerText = "What are your opening hours?";
+            document.querySelector("#collapseTwo .accordion-body").innerText = "We are open from Monday to Saturday, 9 AM to 6 PM.";
+
+            document.querySelector("#main-footer p").innerText = "Contact Us | Surendranagar Two-Wheeler Mechanic Association";
+            document.querySelector("#main-footer p:nth-of-type(2)").innerText = "Made with ❤️ by Urvi";
+        }
+    }
+</script>
+   
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

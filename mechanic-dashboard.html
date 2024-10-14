@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanic Dashboard - MAC Buddy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .uploaded-photo {
+            width: 50px;
+            height: 50px;
+            object-fit: cover; /* Maintains aspect ratio and covers the dimensions */
+            margin: 5px;
+        }
+        .image-container img {
+    width: 100%; /* Make the image responsive */
+    max-width: 300px; /* Maximum width for the images */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 20px; /* Space between images */
+}
+body {
+    font-family: 'Roboto', sans-serif; /* You can change 'Roboto' to any font of your choice */
+    color: #6b4739; /* Keep the previous text color */
+}
+nav {
+    background-color: #6f4c3e; /* A warm brown color for the navbar */
+}
+.nav-link {
+    color: white !important; /* White text for navbar links */
+}
+.nav-link:hover {
+    color: #d8b798 !important; /* Lighter shade on hover */
+}
+.btn-custom {
+    background-color: #b39171; /* A lighter brown for buttons */
+    color: #744533; /* Darker text color for contrast */
+    border-radius: 25px; /* Rounded buttons */
+}
+.btn-custom:hover {
+    background-color: #744c3c; /* Darker on hover */
+    color: white; /* Change text to white on hover */
+}
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-tools"></i> MAC Buddy</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html"><i class="fas fa-wrench"></i> Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="booking.html"><i class="fas fa-calendar-check"></i> Booking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                    </li>
+                </ul>
+                <select class="form-select ms-3" id="language-select" onchange="updateLanguage()">
+                    <option selected disabled>Choose Language</option>
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+<div class="main">
+    <!-- Mechanic Dashboard Section -->
+    <div class="container">
+        <h2 class="text-center mt-2">Welcome, Mechanic Name!</h2>
+
+        <!-- Mechanic Information Section -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4 class="card-title">Mechanic Information</h4>
+                <p><strong>Name:</strong> <span id="mechanicName">Mechanic Name</span></p>
+                <p><strong>Customers Served:</strong> <span id="customersServed">50</span></p>
+                <p><strong>Working Experience:</strong> <span id="experience">5 years</span></p>
+                <p><strong>Certifications:</strong> <span id="certifications">ASE Certified, ICAT Certified</span></p>
+                <p><strong>Expertise:</strong> <span id="expertise">Engine Repair, Body Work, Electrical Systems</span></p>
+                <button class="btn btn-light" data-bs-toggle="modal" style="background-color: #6f4c3e; color: white;" data-bs-target="#editInfoModal">Edit Information</button>
+            </div>
+        </div>
+        
+        <!-- Existing Media Section -->
+        
+            <div class="container my-4">
+                <h2 class="text-center">Gallery</h2>
+                <div class="image-container">
+                    <img src="mechanic1.jpg"alt="Image Description 1">
+                    <img src="mechanic2.jpg" alt="Image Description 2">
+                    <img src="mechanic3.jpg" alt="Image Description 3">
+                </div>
+        
+                <!-- Add the video section here -->
+                <h2 class="text-center">Video Tutorial</h2>
+               <h3 class="text-center">no video uploaded yet!</h3>
+            </div>
+        
+        <!-- Photo Upload Section -->
+        <div class="mt-4">
+            <h4>Upload Photos</h4>
+            <form id="photoUploadForm">
+                <div class="mb-3">
+                    <label for="uploadPhotos" class="form-label">Upload Photos</label>
+                    <input type="file" class="form-control" id="uploadPhotos" accept="image/*" multiple required>
+                </div>
+                <div class="mb-3">
+                    <label for="photoDescription" class="form-label">Photo Description (optional)</label>
+                    <textarea class="form-control" id="photoDescription" rows="3" placeholder="Write about the photos"></textarea>
+                </div>
+                <button type="submit" class="btn btn-custom">Upload Photos</button>
+            </form>
+        </div>
+
+        <!-- Video Upload Section -->
+        <div class="mt-4">
+            <h4>Upload Videos</h4>
+            <form id="videoUploadForm">
+                <div class="mb-3">
+                    <label for="uploadVideos" class="form-label">Upload Videos</label>
+                    <input type="file" class="form-control" id="uploadVideos" accept="video/*" multiple required>
+                </div>
+                <button type="submit" class="btn btn-custom">Upload Videos</button>
+            </form>
+        </div>
+
+        <!-- Services Provided Section -->
+        <div class="mt-4">
+            <h4>List of Services Provided</h4>
+            <form id="servicesForm">
+                <div class="mb-3">
+                    <label for="serviceName" class="form-label">Service Name</label>
+                    <input type="text" class="form-control" id="serviceName" required>
+                </div>
+                <div class="mb-3">
+                    <label for="servicePrice" class="form-label">Service Price</label>
+                    <input type="number" class="form-control" id="servicePrice" required>
+                </div>
+                <button type="submit" class="btn btn-custom">Add Service</button>
+            </form>
+            <ul class="list-group mt-3" id="serviceList">
+                <li class="list-group-item">Oil Change - ₹500</li>
+                <li class="list-group-item">Tire Rotation - ₹300</li>
+                <li class="list-group-item">Brake Inspection - ₹700</li>
+                <li class="list-group-item">Engine Diagnostics - ₹800</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Edit Info Modal -->
+    <div class="modal fade" id="editInfoModal" tabindex="-1" aria-labelledby="editInfoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editInfoModalLabel">Edit Mechanic Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editInfoForm">
+                        <div class="mb-3">
+                            <label for="editName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="editName" value="Mechanic Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editExperience" class="form-label">Working Experience</label>
+                            <input type="text" class="form-control" id="editExperience" value="5 years" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editCertifications" class="form-label">Certifications</label>
+                            <input type="text" class="form-control" id="editCertifications" value="ASE Certified, ICAT Certified" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editExpertise" class="form-label">Expertise</label>
+                            <input type="text" class="form-control" id="editExpertise" value="Engine Repair, Body Work, Electrical Systems" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveChangesBtn">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <footer class="text-center py-3">
+        <p id="footer-text">Contact Us | Surendranagar Two-Wheeler Mechanic Association</p>
+        <p id="footer-text">Made with ❤️ by Urvi</p>
+    </footer>
+
+
+    <script>
+        document.getElementById('photoUploadForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const photoFiles = document.getElementById('uploadPhotos').files;
+            const description = document.getElementById('photoDescription').value;
+
+            // Handle photo upload logic here
+            for (let i = 0; i < photoFiles.length; i++) {
+                const photoURL = URL.createObjectURL(photoFiles[i]);
+                const imgElement = document.createElement('img');
+                imgElement.src = photoURL;
+                imgElement.className = "uploaded-photo";
+                document.getElementById('existingMedia').insertAdjacentElement('afterbegin', imgElement);
+            }
+
+            // Optionally, you can handle the description as well
+            if (description) {
+                alert('Description: ' + description); // Or store it somewhere
+            }
+
+            e.target.reset(); // Reset the form
+        });
+
+        document.getElementById('videoUploadForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const videoFiles = document.getElementById('uploadVideos').files;
+
+            // Handle video upload logic here
+            for (let i = 0; i < videoFiles.length; i++) {
+                const videoURL = URL.createObjectURL(videoFiles[i]);
+                const videoElement = document.createElement('video');
+                videoElement.src = videoURL;
+                videoElement.controls = true;
+                videoElement.className = "w-100 mb-2";
+                document.getElementById('existingMedia').insertAdjacentElement('beforeend', videoElement);
+            }
+
+            e.target.reset(); // Reset the form
+        });
+
+        document.getElementById('servicesForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const serviceName = document.getElementById('serviceName').value;
+            const servicePrice = document.getElementById('servicePrice').value;
+
+            const li = document.createElement('li');
+            li.className = "list-group-item";
+            li.textContent = `${serviceName} - ₹${servicePrice}`;
+            document.getElementById('serviceList').appendChild(li);
+            e.target.reset(); // Reset the form
+        });
+
+        document.getElementById('saveChangesBtn').addEventListener('click', function () {
+            const name = document.getElementById('editName').value;
+            const experience = document.getElementById('editExperience').value;
+            const certifications = document.getElementById('editCertifications').value;
+            const expertise = document.getElementById('editExpertise').value;
+
+            document.getElementById('mechanicName').textContent = name;
+            document.getElementById('experience').textContent = experience;
+            document.getElementById('certifications').textContent = certifications;
+            document.getElementById('expertise').textContent = expertise;
+
+            const modal = bootstrap.Modal.getInstance(document.getElementById('editInfoModal'));
+            modal.hide();
+        });
+        
+    const translations = {
+        English: {
+            welcome: "Welcome, Mechanic Name!",
+            mechanicInfo: "Mechanic Information",
+            name: "Name:",
+            customersServed: "Customers Served:",
+            experience: "Working Experience:",
+            certifications: "Certifications:",
+            expertise: "Expertise:",
+            gallery: "Gallery", 
+            uploadPhotos: "Upload Photos",
+            uploadVideos: "Upload Videos",
+            listOfServices: "List of Services Provided",
+            serviceName: "Service Name",
+            servicePrice: "Service Price",
+            addService: "Add Service",
+            editInfo: "Edit Mechanic Information",
+            videoTutorial: "Video Tutorial",
+            noVideo: "No video uploaded yet!",
+            footerContact: "Contact Us | Surendranagar Two-Wheeler Mechanic Association",
+            footerMade: "Made with ❤️ by Urvi",
+        },
+        Hindi: {
+            welcome: "स्वागत है, मैकेनिक नाम!",
+            mechanicInfo: "मैकेनिक जानकारी",
+            name: "नाम:",
+            customersServed: "सेवा किए गए ग्राहक:",
+            experience: "काम का अनुभव:",
+            certifications: "प्रमाणपत्र:",
+            expertise: "विशेषज्ञता:",
+            gallery: "गैलरी", 
+            uploadPhotos: "फोटो अपलोड करें",
+            uploadVideos: "वीडियो अपलोड करें",
+            listOfServices: "प्रदान की गई सेवाओं की सूची",
+            serviceName: "सेवा का नाम",
+            servicePrice: "सेवा की कीमत",
+            addService: "सेवा जोड़ें",
+            editInfo: "मैकेनिक जानकारी संपादित करें",
+            videoTutorial: "वीडियो ट्यूटोरियल",
+            noVideo: "कोई वीडियो अपलोड नहीं किया गया!",
+            footerContact: "संपर्क करें | सुरेन्द्रनगर दोपहिया मैकेनिक संघ",
+            footerMade: "❤️ द्वारा बनाया गया Urvi",
+        },
+    };
+    function updateLanguage() {
+        const selectedLanguage = document.getElementById('language-select').value;
+
+// Update main headings and text
+document.querySelector('h2.text-center.mt-2').textContent = translations[selectedLanguage].welcome;
+document.querySelector('.card-title').textContent = translations[selectedLanguage].mechanicInfo;
+
+// Update labels
+document.getElementById('mechanicName').previousSibling.textContent = translations[selectedLanguage].name;
+document.getElementById('customersServed').previousSibling.textContent = translations[selectedLanguage].customersServed;
+document.getElementById('experience').previousSibling.textContent = translations[selectedLanguage].experience;
+document.getElementById('certifications').previousSibling.textContent = translations[selectedLanguage].certifications;
+
+// Update expertise content
+document.getElementById('expertise').textContent = translations[selectedLanguage].expertise;
+
+// Update upload section headings
+document.querySelectorAll('h4').forEach((h4) => {
+    if (h4.textContent === "Upload Photos") {
+        h4.textContent = translations[selectedLanguage].uploadPhotos;
+    } else if (h4.textContent === "Upload Videos") {
+        h4.textContent = translations[selectedLanguage].uploadVideos;
+    } else if (h4.textContent === "List of Services Provided") {
+        h4.textContent = translations[selectedLanguage].listOfServices;
+    }
+});
+
+// Update the Gallery heading
+document.querySelector('div.container.my-4 h2.text-center').textContent = translations[selectedLanguage].gallery;
+
+// Update service form labels
+document.getElementById('serviceName').previousSibling.textContent = translations[selectedLanguage].serviceName;
+document.getElementById('servicePrice').previousSibling.textContent = translations[selectedLanguage].servicePrice;
+
+// Update button text
+document.querySelector('button#saveChangesBtn').textContent = translations[selectedLanguage].editInfo;
+document.querySelector('button.btn-custom').textContent = translations[selectedLanguage].addService;
+
+// Update video tutorial section
+document.querySelector('h3.text-center').textContent = translations[selectedLanguage].videoTutorial;
+document.querySelector('h3.text-center + h3').textContent = translations[selectedLanguage].noVideo;
+
+// Update footer text
+document.getElementById('footer-text').textContent = translations[selectedLanguage].footerContact;
+document.querySelector('footer p:last-child').textContent = translations[selectedLanguage].footerMade;
+}    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

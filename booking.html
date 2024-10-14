@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAC Buddy - Booking Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .confirmation-message {
+            font-size: 1.5rem;
+            color: green;
+            margin-top: 20px;
+
+        }
+        
+    .confirmation-message {
+        font-size: 1.5rem;
+        color: green;
+        margin-top: 20px;
+    }
+
+    .container {
+    margin-top: 0;  /* Remove any top margin */
+    padding-top: 0; /* Remove any top padding */
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-tools"></i> MAC Buddy</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" id="home-link"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html" id="services-link"><i class="fas fa-concierge-bell"></i> Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html" id="contact-link"><i class="fas fa-envelope"></i> Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="CustDash.html" id="dashboard-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.html" id="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- Language Dropdown -->
+                <select class="form-select ms-3" id="language-select" onchange="updateLanguage()">
+                    <option selected disabled>Choose Language</option>
+                    <option value="English">English</option>
+                    <option value="Hindi">हिन्दी</option>
+                </select>
+            </div>
+            
+        </div>
+    </nav>
+<div class="main">
+    <!-- Booking Form -->
+    <div class="container mt-1">
+        <h2 id="booking-title">Book a Service</h2>
+        <form id="booking-form">
+            <div class="mb-3">
+                <label for="name" class="form-label" id="name-label">Name:</label>
+                <input type="text" id="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label" id="phone-label">Phone:</label>
+                <input type="tel" id="phone" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="area" class="form-label" id="area-label">Select Area:</label>
+                <select id="area" class="form-select" onchange="updateMechanics()" required>
+                    <option value="">Choose...</option>
+                    <option value="1">Wadhwan</option>
+                    <option value="2">Ratanpar</option>
+                    <option value="3">Alkapuri</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="mechanic" class="form-label" id="mechanic-label">Select Mechanic:</label>
+                <select id="mechanic" class="form-select" required>
+                    <option value="">Choose a mechanic</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="service" class="form-label" id="service-label">Select Service:</label>
+                <select id="service" class="form-select" required>
+                    <option value="">Choose a service</option>
+                    <option value="1">Full Service</option>
+                    <option value="2">Half Service</option>
+                    <option value="3">Washing</option>
+                    <option value="4">Other</option>
+                </select>
+                <input type="text" id="other-service" class="form-control mt-2" placeholder="Please specify..." style="display:none;">
+            </div>
+            <div class="mb-3">
+                <label for="pickup" class="form-label" id="pickup-label">Pickup and Drop Facility:</label>
+                <select id="pickup" class="form-select" onchange="togglePickupFields()">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </div>
+            <div id="pickup-fields" style="display:none;">
+                <div class="mb-3">
+                    <label for="address" class="form-label" id="address-label">Address:</label>
+                    <input type="text" id="address" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="time" class="form-label" id="time-label">Preferred Time:</label>
+                    <input type="datetime-local" id="time" class="form-control">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="vehicle" class="form-label" id="vehicle-label">Select Vehicle:</label>
+                <select id="vehicle" class="form-select" required>
+                    <option value="">Choose a vehicle</option>
+                    <optgroup label="Normal (Petrol)">
+                        <option value="Honda Activa">Honda Activa</option>
+                        <option value="Yamaha FZ">Yamaha FZ</option>
+                        <option value="Bajaj Pulsar 150">Bajaj Pulsar 150</option>
+                        <option value="Suzuki Access 125">Suzuki Access 125</option>
+                        <option value="Royal Enfield Classic 350">Royal Enfield Classic 350</option>
+                        <option value="TVS Jupiter">TVS Jupiter</option>
+                        <option value="Hero Splendor">Hero Splendor</option>
+                        <option value="Honda Dio">Honda Dio</option>
+                        <option value="KTM Duke">KTM Duke</option>
+                        <option value="TVS Apache">TVS Apache</option>
+                    </optgroup>
+                    <optgroup label="Electric">
+                        <option value="Ather 450X">Ather 450X</option>
+                        <option value="TVS iQube">TVS iQube</option>
+                        <option value="Ola S1">Ola S1</option>
+                        <option value="Bajaj Chetak Electric">Bajaj Chetak Electric</option>
+                        <option value="Hero Electric Optima HX">Hero Electric Optima HX</option>
+                        <option value="Revolt RV400">Revolt RV400</option>
+                        <option value="Okinawa PraisePro">Okinawa PraisePro</option>
+                        <option value="Ampere Magnus EX">Ampere Magnus EX</option>
+                        <option value="Simple One">Simple One</option>
+                        <option value="Tork Kratos">Tork Kratos</option>
+                    </optgroup>
+                    <optgroup label="BS6">
+                        <option value="Honda Activa 6G">Honda Activa 6G</option>
+                        <option value="Yamaha FZ-S V3 BS6">Yamaha FZ-S V3 BS6</option>
+                        <option value="Bajaj Pulsar 150 BS6">Bajaj Pulsar 150 BS6</option>
+                        <option value="Suzuki Access 125 BS6">Suzuki Access 125 BS6</option>
+                        <option value="Royal Enfield Meteor 350 BS6">Royal Enfield Meteor 350 BS6</option>
+                        <option value="TVS Apache RTR 160 4V BS6">TVS Apache RTR 160 4V BS6</option>
+                        <option value="Hero Splendor Plus BS6">Hero Splendor Plus BS6</option>
+                        <option value="Honda Shine BS6">Honda Shine BS6</option>
+                        <option value="KTM 250 Duke BS6">KTM 250 Duke BS6</option>
+                        <option value="TVS Jupiter BS6">TVS Jupiter BS6</option>
+                    </optgroup>
+                </select>
+            </div>
+            
+            <!-- Vehicle Number -->
+            <div class="mb-3">
+                <label for="vehicle-number" class="form-label">Vehicle Number:</label>
+                <input type="text" id="vehicle-number" class="form-control vehicle-number-input" placeholder="e.g., GJ-05-AB-1234" pattern="[A-Z]{2}-\d{2}-[A-Z]{2}-\d{4}" required>
+                <small class="form-text text-muted">Format: XX-00-XX-0000</small>
+            </div>
+            <div class="mb-3">
+                <label for="date" class="form-label" id="date-label">Preferred Date:</label>
+                <input type="date" id="date" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="background-color: rgb(100, 74, 74);" id="submit-button">Submit</button>
+        </form>
+        <div id="confirmation" class="confirmation-message" style="display:none;">
+            <p id="confirmation-message">The mechanic will contact you soon to confirm your booking!</p>
+            <button class="btn btn-success mt-2" id="invoice-button" style="display:none;" onclick="viewInvoice()">View Estimated Invoice</button>
+            <button class="btn btn-secondary mt-2" id="dashboard-button" style="display:none;" onclick="goToDashboard()">Go to Customer Dashboard</button>
+        </div>
+        
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer class="text-center py-3">
+        <p id="footer-text">Contact Us | Surendranagar Two-Wheeler Mechanic Association</p>
+        <p>Made with ❤️ by Urvi</p>
+    </footer>
+    <script>
+       
+        // Generalized validation function
+        function validateField(field, pattern, message) {
+            const value = field.value.trim();
+            if (!pattern.test(value)) {
+                setError(field, message);
+                return false;
+            }
+            setError(field);
+            return true;
+        }
+          function setError(field, message = "") {
+        const errorMsg = field.nextElementSibling;
+        if (message) {
+            if (!errorMsg) {
+                const errorElement = document.createElement("div");
+                errorElement.className = "text-danger mt-1";
+                errorElement.textContent = message;
+                field.after(errorElement);
+            } else {
+                errorMsg.textContent = message;
+            }
+        } else if (errorMsg) {
+            errorMsg.remove();
+        }
+    }
+
+    // Generalized validation function
+    function validateField(field, pattern, message) {
+        const value = field.value.trim();
+        if (!pattern.test(value)) {
+            setError(field, message);
+            return false;
+        }
+        setError(field);
+        return true;
+    }
+
+    // Function to check for empty fields
+    function validateRequiredFields() {
+        const requiredFields = [
+            { field: document.getElementById("name"), message: "Please fill out your name." },
+            { field: document.getElementById("phone"), message: "Please fill out your phone number." },
+            { field: document.getElementById("area"), message: "Please select an area." },
+            { field: document.getElementById("mechanic"), message: "Please select a mechanic." },
+            { field: document.getElementById("service"), message: "Please select a service." },
+            { field: document.getElementById("vehicle"), message: "Please select a vehicle." },
+            { field: document.getElementById("vehicle-number"), message: "Please fill out your vehicle number." },
+            { field: document.getElementById("date"), message: "Please select a preferred date." },
+        ];
+
+        let isValid = true;
+
+        requiredFields.forEach(({ field, message }) => {
+            if (field.value.trim() === "") {
+                setError(field, message);
+                isValid = false;
+            } else {
+                setError(field);
+            }
+        });
+
+        return isValid;
+    }
+
+    // Validate all fields on form submission
+    document.getElementById("booking-form").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Run all validations
+        const isValid =
+            validateField(document.getElementById("name"), validations.name.pattern, validations.name.message) &&
+            validateField(document.getElementById("phone"), validations.phone.pattern, validations.phone.message) &&
+            validateSelectField("area", "Please select an area.") &&
+            validateSelectField("mechanic", "Please select a mechanic.") &&
+            validateSelectField("service", "Please select a service.") &&
+            validateSelectField("vehicle", "Please select a vehicle.") &&
+            validateField(document.getElementById("vehicle-number"), validations.vehicleNumber.pattern, validations.vehicleNumber.message) &&
+            validateField(document.getElementById("date"), validations.date.pattern, validations.date.message) &&
+            validateRequiredFields(); // Add required fields validation
+
+        // Check if there are any error messages displayed
+        if (isValid) {
+            const name = document.getElementById("name").value;
+            document.getElementById("confirmation-message").textContent = `Thank you, ${name}! The mechanic will contact you soon to confirm your booking.`;
+            document.getElementById("confirmation").style.display = "block";
+            document.getElementById("invoice-button").style.display = "inline-block";
+            document.getElementById("dashboard-button").style.display = "inline-block";
+            this.reset(); // Reset form after submission
+        }
+    });
+
+
+        // Define patterns and messages
+        const validations = {
+            name: {
+                pattern: /^[a-zA-Z\s]+$/,
+                message: "Name should contain only alphabets."
+            },
+            phone: {
+                pattern: /^[6-9]\d{9}$/,
+                message: "Enter a valid 10-digit phone number starting with 6-9."
+            },
+            vehicleNumber: {
+                pattern: /^[A-Z]{2}-\d{2}-[A-Z]{2}-\d{4}$/,
+                message: "Enter a valid vehicle number (e.g., GJ-05-AB-1234)."
+            },
+            date: {
+                pattern: /.*/, // Any input is valid (just checking if not empty)
+                message: "Please select a preferred date."
+            }
+        };
+    
+        // Validate on input change
+        document.getElementById("name").addEventListener("input", (e) => validateField(e.target, validations.name.pattern, validations.name.message));
+        document.getElementById("phone").addEventListener("input", (e) => validateField(e.target, validations.phone.pattern, validations.phone.message));
+        document.getElementById("vehicle-number").addEventListener("input", (e) => validateField(e.target, validations.vehicleNumber.pattern, validations.vehicleNumber.message));
+        document.getElementById("date").addEventListener("input", (e) => validateField(e.target, validations.date.pattern, validations.date.message));
+    
+        function validateSelectField(fieldId, message) {
+            const field = document.getElementById(fieldId);
+            if (field.value === "") {
+                setError(field, message);
+            } else {
+                setError(field);
+            }
+        }
+    
+        // Add event listeners for select fields
+        ["area", "mechanic", "service", "vehicle"].forEach(fieldId => {
+            document.getElementById(fieldId).addEventListener("change", () => validateSelectField(fieldId, `Please select a ${fieldId}.`));
+        });
+    
+        // Validate all fields on form submission
+        document.getElementById("booking-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+    
+            // Run all validations
+            const isValid =
+                validateField(document.getElementById("name"), validations.name.pattern, validations.name.message) &&
+                validateField(document.getElementById("phone"), validations.phone.pattern, validations.phone.message) &&
+                validateSelectField("area", "Please select an area.") &&
+                validateSelectField("mechanic", "Please select a mechanic.") &&
+                validateSelectField("service", "Please select a service.") &&
+                validateSelectField("vehicle", "Please select a vehicle.") &&
+                validateField(document.getElementById("vehicle-number"), validations.vehicleNumber.pattern, validations.vehicleNumber.message) &&
+                validateField(document.getElementById("date"), validations.date.pattern, validations.date.message);
+    
+            // Check if there are any error messages displayed
+            if (isValid) {
+                const name = document.getElementById("name").value;
+                document.getElementById("confirmation-message").textContent = `Thank you, ${name}! The mechanic will contact you soon to confirm your booking.`;
+                document.getElementById("confirmation").style.display = "block";
+                document.getElementById("invoice-button").style.display = "inline-block";
+                document.getElementById("dashboard-button").style.display = "inline-block";
+                this.reset(); // Reset form after submission
+            }
+        });
+    
+        // Function to simulate viewing the invoice
+        function viewInvoice() {
+            window.location.href = "invoice.html";
+        }
+    
+        // Function to redirect to the customer dashboard
+        function goToDashboard() {
+            window.location.href = "CustDash.html";
+        }
+    
+        function updateMechanics() {
+            const area = document.getElementById("area").value;
+            const mechanicSelect = document.getElementById("mechanic");
+            mechanicSelect.innerHTML = ""; // Clear previous options
+    
+            const mechanics = {
+                "1": ["Sanjay Auto Workshop", "Ma Shakti Workshop", "Milan Auto Workshop"],
+                "2": ["Pavan Auto Workshop", "Jenil Services", "Raj Workshop"],
+                "3": ["Sujal Auto Workshop", "Mohan Workshop", "Shivshakti Auto Workshop"]
+            };
+    
+            if (mechanics[area]) {
+                mechanics[area].forEach((mechanic, index) => {
+                    mechanicSelect.innerHTML += `<option value="${index + 1}">${mechanic}</option>`;
+                });
+            }
+        }
+    
+        function togglePickupFields() {
+            const pickup = document.getElementById("pickup").value;
+            const pickupFields = document.getElementById("pickup-fields");
+            pickupFields.style.display = pickup === "yes" ? "block" : "none";
+        }
+    
+        document.getElementById("service").addEventListener("change", function() {
+            const otherServiceInput = document.getElementById("other-service");
+            otherServiceInput.style.display = this.value === "4" ? "block" : "none";
+        });
+    
+        function updateLanguage() {
+            const lang = document.getElementById("language-select").value;
+            const texts = lang === "Hindi" ? {
+                bookingTitle: "सेवा बुक करें",
+                nameLabel: "नाम:",
+                phoneLabel: "फोन:",
+                areaLabel: "क्षेत्र का चयन करें:",
+                mechanicLabel: "मैकेनिक चुनें:",
+                serviceLabel: "सेवा चुनें:",
+                pickupLabel: "पिकअप और ड्रॉप सुविधा:",
+                addressLabel: "पता:",
+                timeLabel: "पसंदीदा समय:",
+                vehicleLabel: "वाहन चुनें:",
+                dateLabel: "पसंदीदा तिथि:",
+                submitButton: "जमा करें",
+                footerText: "हमसे संपर्क करें | सुरेंद्रनगर टू-व्हीलर मैकेनिक एसोसिएशन",
+                homeLink: "मुख्य पृष्ठ",
+                servicesLink: "सेवाएं",
+                contactLink: "हमसे संपर्क करें",
+                dashboardLink: "डैशबोर्ड",
+                logoutLink: "लॉगआउट"
+            } : {
+                bookingTitle: "Book a Service",
+                nameLabel: "Name:",
+                phoneLabel: "Phone:",
+                areaLabel: "Select Area:",
+                mechanicLabel: "Select Mechanic:",
+                serviceLabel: "Select Service:",
+                pickupLabel: "Pickup and Drop Facility:",
+                addressLabel: "Address:",
+                timeLabel: "Preferred Time:",
+                vehicleLabel: "Select Vehicle:",
+                dateLabel: "Preferred Date:",
+                submitButton: "Submit",
+                footerText: "Contact Us | Surendranagar Two-Wheeler Mechanic Association",
+                homeLink: "Home",
+                servicesLink: "Services",
+                contactLink: "Contact Us",
+                dashboardLink: "Dashboard",
+                logoutLink: "Logout"
+            };
+    
+            document.getElementById("booking-title").textContent = texts.bookingTitle;
+            document.getElementById("name-label").textContent = texts.nameLabel;
+            document.getElementById("phone-label").textContent = texts.phoneLabel;
+            document.getElementById("area-label").textContent = texts.areaLabel;
+            document.getElementById("mechanic-label").textContent = texts.mechanicLabel;
+            document.getElementById("service-label").textContent = texts.serviceLabel;
+            document.getElementById("pickup-label").textContent = texts.pickupLabel;
+            document.getElementById("address-label").textContent = texts.addressLabel;
+            document.getElementById("time-label").textContent = texts.timeLabel;
+            document.getElementById("vehicle-label").textContent = texts.vehicleLabel;
+            document.getElementById("date-label").textContent = texts.dateLabel;
+            document.getElementById("submit-button").textContent = texts.submitButton;
+            document.getElementById("footer-text").textContent = texts.footerText;
+            document.getElementById("home-link").textContent = texts.homeLink;
+            document.getElementById("services-link").textContent = texts.servicesLink;
+            document.getElementById("contact-link").textContent = texts.contactLink;
+            document.getElementById("dashboard-link").textContent = texts.dashboardLink;
+            document.getElementById("logout-link").textContent = texts.logoutLink;
+        }
+    
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('bookingForm'); // Ensure your form has the id 'bookingForm'
+            form.addEventListener('submit', validateForm); // Add event listener for form submission
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

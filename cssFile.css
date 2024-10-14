@@ -1,0 +1,592 @@
+/* General Style */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #f5f5f3, #e6e6e3);
+    color: #333;
+}
+
+.navbar {
+    background-color: #3c342f;
+    padding: 10px;
+}
+
+.navbar a, .navbar a:visited {
+    color: #fff;
+}
+
+.banner-image {
+    max-width: 300px;
+    margin: 20px auto;
+    height: auto;
+}
+
+.title-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4e4237;
+}
+
+.subtitle, .association {
+    font-size: 1.2rem;
+    color: #4e4237;
+}
+
+/* Buttons Section */
+.buttons-section .btn {
+    border-radius: 20px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-custom {
+    background-color: #7a634d;
+    color: white;
+}
+
+.btn-custom:hover {
+    background-color: #614e3d;
+}
+
+.btn-custom-secondary {
+    background-color: #594f49;
+    color: white;
+}
+
+.btn-custom-secondary:hover {
+    background-color: #473e39;
+}
+
+.btn-custom-warning {
+    background-color: #85614a;
+    color: white;
+}
+
+.btn-custom-warning:hover {
+    background-color: #6b4c3b;
+}
+
+/* Language Dropdown */
+#language-select {
+    width: 150px;
+    color: #a09b93;
+    border-radius: 15px;
+}
+
+/* Modal Styling */
+.modal-content {
+    background-color: #f9f7f2;
+}
+
+.modal-footer .btn-custom {
+    background-color: #7a634d;
+}
+
+.modal-footer .btn-custom:hover {
+    background-color: #614e3d;
+}
+
+/* Footer */
+footer {
+    background-color: #3c342f;
+    color: #fff;
+    position: relative; /* Changed from fixed to relative for better responsiveness */
+    width: 100%;
+    bottom: 0;
+}
+.testimonials {
+    background-color: #f9f9f9;
+}
+
+.testimonial-item {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.blockquote {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.blockquote-footer {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.carousel-inner img {
+    border: 4px solid #ddd;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #333;
+    border-radius: 50%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 50px;
+}
+
+
+
+
+/* Carousel Styles */
+.carousel {
+    background-color: #f5f5f3; /* Match with body gradient */
+    border-radius: 10px; /* Rounded corners for a softer look */
+    padding: 20px; /* Padding to separate content from the edges */
+}
+
+/* Carousel Controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #7a634d; /* Match button color for consistency */
+}
+/* Testimonials */
+.testimonials {
+    background-color: #f9f9f9; /* Light color to match the rest of the page */
+}
+/* Change font color for testimonials section */
+.testimonials h2, /* If you have a heading like <h2> */
+.testimonial-item p {
+    color: #7a634d; /* Change this to your desired color */
+}
+body {
+    background-image: url('C:\Users\inspi\OneDrive\Desktop\MACBuddy\bgg.jpg'); /* Replace IMAGE_URL_HERE with your image link */
+    background-size: cover; /* This ensures the image covers the entire background */
+    background-position: center; /* This centers the image */
+    background-repeat: no-repeat; /* This prevents the image from repeating */
+}
+
+/* Mechanic Button */
+#mechanic-button.btn-mechanic {
+    background-color: #7a634d; /* Mechanic button color */
+    color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+#mechanic-button.btn-mechanic:hover {
+    background-color: #614e3d; /* Mechanic button hover color */
+}
+
+/* Admin Button */
+#admin-button.btn-admin {
+    background-color: #594f49; /* Admin button color */
+    color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+#admin-button.btn-admin:hover {
+    background-color: #473e39; /* Admin button hover color */
+}
+
+
+/* General Style */
+
+.main{
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('https://static.vecteezy.com/system/resources/previews/003/059/516/non_2x/working-tools-on-wooden-background-top-view-free-photo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keeps background in place */
+    color: #333;
+    min-height: 100vh; /* Full height of the viewport */
+    padding-bottom: 50px; /* Space for footer */
+}
+
+.main2 {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('main2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keeps background in place */
+    color: #333;
+    min-height: 100vh; /* Full height of the viewport */
+    padding-bottom: 50px; /* Space for footer */
+}
+.main3{
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('main3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keeps background in place */
+    color: #333;
+    min-height: 100vh; /* Full height of the viewport */
+    padding-bottom: 50px; /* Space for footer */
+}
+
+.hero {
+    height: 60vh; /* Adjust this height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.title-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #4e4237;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #4e4237;
+}
+
+.services-section {
+    background-color: rgba(255, 255, 255, 0.9); /* Light background for services section */
+    padding: 50px 0;
+}
+
+/* Slogan Section */
+.slogan-section h3 {
+    color: #7a634d; /* Matches the color theme */
+    font-size: 1.8rem;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Brand Logos Section */
+.brand-logos img {
+    width: 100px;
+    height: auto;
+    margin: 10px;
+    transition: transform 0.3s ease;
+}
+
+.brand-logos img:hover {
+    transform: scale(1.1); /* Slight zoom on hover for interactivity */
+}
+/* Brand Logos as Pillars on Left and Right */
+.brand-logos-left, .brand-logos-right {
+    position: fixed;
+    top: 20%; /* Adjust this to set the starting height of the logos */
+    width: 100px;
+    z-index: 10; /* Make sure it stays above other content */
+}
+
+.brand-logos-left {
+    left: 10px; /* Adjust to position on the left */
+}
+
+.brand-logos-right {
+    right: 10px; /* Adjust to position on the right */
+}
+
+.brand-logos img {
+    display: block;
+    width: 80px;
+    height: auto;
+    margin: 15px 0;
+    transition: transform 0.3s ease;
+}
+
+.brand-logos img:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Additional Styling */
+.slogan-section h3 {
+    color: #7a634d;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-top: 20px;
+}
+.blog-section {
+    background-color: #f9f9f9;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #4e4237;
+    margin-bottom: 20px;
+}
+
+.benefits-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* Makes it responsive */
+}
+
+.benefit-item {
+    width: 18%; /* Adjust width as needed */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 10px;
+    transition: transform 0.3s;
+}
+
+.benefit-item:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+.benefit-item h3 {
+    font-size: 1.5rem;
+    color: #7a634d;
+}
+
+.benefit-item p {
+    font-size: 1rem;
+    color: #333;
+}
+
+.image-upload {
+    margin-top: 20px;
+}
+
+.upload-label {
+    display: inline-block;
+    background-color: #7a634d;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.upload-label:hover {
+    background-color: #614e3d;
+}
+.image-container {
+    text-align: center; /* Centers the image */
+    margin-top: 20px; /* Space above the image */
+}
+
+.uploaded-image {
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 10px; /* Optional rounded corners */
+}
+.blog-section {
+    position: relative; /* Position relative to use overlay */
+    background-image: url('mechanic1.jpg'); /* Add your background image */
+    background-size: cover;
+    background-position: center;
+    padding: 40px 0;
+    color: #fff; /* Change text color to ensure visibility against background */
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay for better text visibility */
+    padding: 20px;
+}
+
+.benefits-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.benefit-item {
+    text-align: center;
+    margin: 15px;
+    flex: 1 1 30%;
+}
+
+.benefit-item i {
+    font-size: 2rem; /* Increase icon size for better visibility */
+    margin-bottom: 10px; /* Space between icon and text */
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem; /* Adjust title size */
+    margin-bottom: 20px;
+}
+.blog-section {
+    position: relative; /* Position relative to use overlay */
+    background-image: url('mechanic1.jpg'); /* Add your background image */
+    background-size: cover;
+    background-position: center;
+    padding: 40px 0;
+    color: #333; /* Darker text color for visibility */
+}
+
+/* Add an overlay for text visibility */
+.blog-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8); /* White overlay with some transparency */
+    z-index: 1; /* Position the overlay above the background */
+}
+
+.container {
+    position: relative; /* Position for text visibility */
+    z-index: 2; /* Ensure text is above the overlay */
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem; /* Adjust title size */
+    margin-bottom: 20px;
+    color: #333; /* Dark text color */
+}
+
+.benefits-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.benefit-item {
+    text-align: center;
+    margin: 15px;
+    flex: 1 1 30%;
+}
+
+.benefit-item i {
+    font-size: 2rem; /* Increase icon size for better visibility */
+    margin-bottom: 10px; /* Space between icon and text */
+    color: #7a634d; /* Change icon color for better contrast */
+}
+
+.benefit-item h3, .benefit-item p {
+    color: #333; /* Darker text color */
+}
+.gallery-section {
+    background: linear-gradient(to right, #f7f7f7, #eaeaea);
+    padding: 50px;
+  }
+  
+  .gallery-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .gallery-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .gallery-item {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+  }
+  
+  .gallery-item:hover {
+    transform: scale(1.05);
+  }
+  
+  .gallery-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .image-caption {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #555;
+    margin-top: 10px;
+  }
+  /* Custom Buttons with Gradient */
+
+.btn-custom-secondary {
+    background: linear-gradient(45deg, #FF8A65, #D84315);
+    color: #fff;
+}
+
+.btn-mechanic {
+    background: linear-gradient(45deg, #FF7043, #E64A19);
+    color: #fff;
+}
+
+.btn-admin {
+    background: linear-gradient(45deg, #66BB6A, #43A047);
+    color: #fff;
+}
+/* Button Shadow */
+.btn-custom, .btn-custom-secondary, .btn-mechanic, .btn-admin {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-custom:hover, .btn-custom-secondary:hover, .btn-mechanic:hover, .btn-admin:hover {
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px); /* Button moves up slightly on hover */
+}
+/* Hover Effects */
+.btn-custom, .btn-custom-secondary, .btn-mechanic, .btn-admin {
+    transition: all 0.3s ease;
+}
+
+/* Rounded Buttons */
+.btn-custom, .btn-custom-secondary, .btn-mechanic, .btn-admin {
+    border-radius: 30px;
+    padding: 12px 24px;
+}
+
+/* Signup and Login Button Colors */
+.btn-signup {
+    background-color: #8b6b4c; /* Warm brown tone */
+    color: white;
+}
+
+.btn-signup:hover {
+    background-color: #705743; /* Darker shade on hover */
+}
+
+.btn-login {
+    background-color: #b07c6e; /* Lighter brown tone */
+    color: white;
+}
+
+.btn-login:hover {
+    background-color: #9e6e58; /* Darker shade on hover */
+}
+
+/* Adjusting the Blue Color */
+.btn-custom-blue {
+    background-color: #5b8ebc; /* Lighter blue shade */
+    color: white;
+}
+
+.btn-custom-blue:hover {
+    background-color: #3f6b91; /* Medium blue shade on hover */
+}
+
+/* Add Icon Styles */
+.icon {
+    margin-right: 5px; /* Space between icon and text */
+}
+.button-container, .admin-mechanic-container {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: flex-start; /* Align buttons to the start */
+}
+/* Add margin to buttons for spacing */
+.btn {
+    margin: 10px 0; /* Vertical spacing */
+}
+
+/* Mechanic and Admin Login Button Styles */
+.btn-mechanic, .btn-admin {
+    background-color: #b07c6e; /* Match with your theme */
+    color: white;
+}
+
+.btn-mechanic:hover, .btn-admin:hover {
+    background-color: #9e6e58; /* Darker shade on hover */
+}

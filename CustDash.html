@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAC Buddy - Customer Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5; /* Light background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body takes full height */
+        }
+
+        .navbar a.nav-link {
+            color: #fff; /* White text for navbar links */
+        }
+
+        .sidebar .list-group-item {
+            color: #fff; /* White text for sidebar items */
+        }
+
+        footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        h3 {
+            color: #8B4513; /* SaddleBrown for headings */
+        }
+
+        h4 {
+            color: #A0522D; /* Sienna for subheadings */
+        }
+
+        .btn-primary {
+            background-color: #A0522D; /* Sienna */
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #8B4513; /* Darker shade on hover */
+        }
+
+        .list-group-item {
+            background-color: #fff; /* White for list items */
+            border: 1px solid #D2691E; /* Border in Chocolate */
+        }
+
+        .list-group-item:hover {
+            background-color: #F5DEB3; /* Wheat on hover */
+        }
+        
+        .card {
+            margin: 10px 0; /* Space between cards */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="fas fa-tools"></i> MAC Buddy</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html"><i class="fas fa-address-book"></i> Contact Us</a>
+                    </li>
+                </ul>
+                
+                <!-- Language Dropdown -->
+                <select class="form-select ms-3" id="language-select" onchange="updateLanguage()">
+                    <option selected disabled>Choose Language</option>
+                    <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main">
+        <!-- Sidebar & Main Content -->
+        <div class="container-fluid mt-3 flex-fill">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-md-3">
+                    <ul class="list-group">
+                        <li class="list-group-item active" style="background-color: #A0522D;"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+                        <li class="list-group-item" onclick="redirectToBooking()"><i class="fas fa-calendar-check"></i> Book a Service</li>
+                        <li class="list-group-item" onclick="showSection('myServices')"><i class="fas fa-cogs"></i> My Services</li>
+                        <li class="list-group-item" onclick="showSection('invoice')"><i class="fas fa-file-invoice"></i> View Invoice</li>
+                        <li class="list-group-item" onclick="showSection('support')"><i class="fas fa-headset"></i> Support</li>
+                    </ul>
+                    
+                </div>
+
+                <!-- Main Content -->
+                <div class="col-md-9">
+                    <div id="content-area" class="p-3">
+                        <h3>Welcome, <span id="user-name">User Name</span>!</h3>
+                        <p>Select an option from the sidebar to manage your account or book services.</p>
+                        
+                        <!-- Dynamic Sections -->
+                        <div id="dynamic-content">
+                            <!-- Default Message -->
+                            <p>Select a service from the sidebar to view details.</p>
+                        </div>
+
+                        <!-- Added Cards for More Engagement -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Available Services</h5>
+                                <p class="card-text">Explore our range of two-wheeler services, from routine maintenance to repairs.</p>
+                                <a href="services.html" class="btn btn-custom-warning">View Services</a>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Customer Testimonials</h5>
+                                <p class="card-text">"The service was quick and efficient. Highly recommend!" - Satisfied Customer</p>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Special Offers</h5>
+                                <p class="card-text">Check out our ongoing offers on select services!</p>
+                                <a class="btn btn-custom-warning">View Offers</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="text-center py-3">
+        <p>Contact Us | Surendranagar Two-Wheeler Mechanic Association</p>
+        <p>Made with ❤️ by Urvi</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Set the username on page load if it exists in session storage
+        window.onload = function() {
+            const storedUsername = sessionStorage.getItem("username");
+            if (storedUsername) {
+                document.getElementById("user-name").innerText = storedUsername;
+            } else {
+                document.getElementById("user-name").innerText = "Guest"; // Default if no username
+            }
+        };
+
+        // Function to show specific section content
+        function showSection(section) {
+            const dynamicContent = document.getElementById("dynamic-content");
+            dynamicContent.innerHTML = ""; // Clear previous content
+
+            switch(section) {
+                case 'myServices':
+                    dynamicContent.innerHTML = `
+                        <h4>My Services</h4>
+                        <ul class="list-group">
+                            <li class="list-group-item">Service 1 - Completed</li>
+                            <li class="list-group-item">Service 2 - Pending</li>
+                        </ul>
+                    `;
+                    break;
+                case 'invoice':
+                    dynamicContent.innerHTML = `
+                        <h4>Invoice History</h4>
+                        <ul class="list-group">
+                            <li class="list-group-item">Invoice 1 - $50</li>
+                            <li class="list-group-item">Invoice 2 - $30</li>
+                        </ul>
+                    `;
+                    break;
+                case 'support':
+                    dynamicContent.innerHTML = `
+                        <h4>Support</h4>
+                        <p>If you need support, please contact us at support@macbuddy.com or call +123-456-7890.</p>
+                    `;
+                    break;
+                default:
+                    dynamicContent.innerHTML = `
+                        <p>Select a service from the sidebar to view details.</p>
+                    `;
+            }
+        }
+
+        function redirectToBooking() {
+            window.location.href = 'booking.html'; // Redirect to booking page
+        }
+
+        function updateLanguage() {
+    const language = document.getElementById('language-select').value;
+
+    if (language === "Hindi") {
+        // Update headings
+        document.querySelector("h3").innerText = "आपका डैशबोर्ड में स्वागत है, " + document.getElementById("user-name").innerText + "!";
+        document.querySelector("p").innerText = "अपना खाता प्रबंधित करने या सेवाएँ बुक करने के लिए साइडबार से विकल्प चुनें।";
+        
+        // Update sidebar items
+        document.querySelectorAll('.list-group-item').forEach((item, index) => {
+            const translations = [
+                "डैशबोर्ड", 
+                "सेवा बुक करें", 
+                "मेरी सेवाएँ", 
+                "इनवॉइस देखें", 
+                "सहायता"
+            ];
+            item.innerText = translations[index];
+        });
+
+        // Update dynamic content messages
+        const dynamicContent = document.getElementById("dynamic-content");
+        dynamicContent.innerHTML = `
+            <p>साइडबार से एक सेवा चुनें ताकि विवरण देख सकें।</p>
+        `;
+
+        // Update card titles and texts
+        document.querySelectorAll('.card-title').forEach((card, index) => {
+            const cardTranslations = [
+                "उपलब्ध सेवाएँ",
+                "ग्राहक प्रशंसापत्र",
+                "विशेष ऑफ़र"
+            ];
+            card.innerText = cardTranslations[index];
+
+            const cardTexts = [
+                "हमारी रेंज की दो-पहिया सेवाएँ, नियमित रखरखाव से लेकर मरम्मत तक खोजें।",
+                "\"सेवा तेज और प्रभावी थी। उच्च सिफारिश!\" - संतुष्ट ग्राहक",
+                "चुनिंदा सेवाओं पर चल रहे ऑफ़रों की जांच करें!"
+            ];
+            card.parentElement.querySelector('.card-text').innerText = cardTexts[index];
+        });
+
+        // Update button texts
+        const buttons = document.querySelectorAll('.btn-custom-warning');
+        buttons.forEach((btn, index) => {
+            btn.innerText = "सेवाएँ देखें";
+        });
+
+        // Update footer text
+        const footer = document.querySelector('footer p');
+        footer.innerHTML = "संपर्क करें | सुरेंद्रनगर दो-पहिया मैकेनिक संघ<br>❤️ उर्वी द्वारा निर्मित";
+
+    } else {
+        // Revert back to English
+        document.querySelector("h3").innerText = "Welcome, " + document.getElementById("user-name").innerText + "!";
+        document.querySelector("p").innerText = "Select an option from the sidebar to manage your account or book services.";
+
+        document.querySelectorAll('.list-group-item').forEach((item, index) => {
+            const translations = [
+                "Dashboard", 
+                "Book a Service", 
+                "My Services", 
+                "View Invoice", 
+                "Support"
+            ];
+            item.innerText = translations[index];
+        });
+
+        const dynamicContent = document.getElementById("dynamic-content");
+        dynamicContent.innerHTML = `
+            <p>Select a service from the sidebar to view details.</p>
+        `;
+
+        document.querySelectorAll('.card-title').forEach((card, index) => {
+            const cardTranslations = [
+                "Available Services",
+                "Customer Testimonials",
+                "Special Offers"
+            ];
+            card.innerText = cardTranslations[index];
+
+            const cardTexts = [
+                "Explore our range of two-wheeler services, from routine maintenance to repairs.",
+                "\"The service was quick and efficient. Highly recommend!\" - Satisfied Customer",
+                "Check out our ongoing offers on select services!"
+            ];
+            card.parentElement.querySelector('.card-text').innerText = cardTexts[index];
+        });
+
+        const buttons = document.querySelectorAll('.btn-custom-warning');
+        buttons.forEach((btn, index) => {
+            btn.innerText = "View Services";
+        });
+
+        const footer = document.querySelector('footer p');
+        footer.innerHTML = "Contact Us | Surendranagar Two-Wheeler Mechanic Association<br>Made with ❤️ by Urvi";
+    }
+}
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

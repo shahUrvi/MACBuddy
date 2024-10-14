@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAC Buddy - Contact Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif; /* Main font */
+            color: #444; /* Default text color (dark gray) for better readability */
+            line-height: 1.6; /* Improve line spacing */
+            background-color: #f9f9f9; /* Light background for contrast */
+        }
+
+        h2 {
+            font-size: 2.5rem; /* Size for main headings */
+            font-weight: 700; /* Bold weight */
+            text-align: center;
+            margin-bottom: 20px; /* Space below headings */
+            color: #5d4037; /* Dark brown color for headings */
+        }
+
+        h5 {
+            font-size: 1.8rem; /* Subheading size */
+            font-weight: 600; /* Medium weight */
+            margin-bottom: 10px; /* Space below subheadings */
+            color: #3e2723; /* A deeper shade of brown */
+        }
+
+        h6 {
+            font-size: 1.4rem; /* Size for smaller headings */
+            font-weight: 500; /* Light weight */
+            margin-bottom: 10px; /* Space below */
+            color: #795548; /* Medium brown color */
+        }
+
+        p {
+            font-size: 1.1rem; /* Slightly larger font size */
+            margin-bottom: 15px; /* Space below paragraphs */
+        }
+
+        .btn-custom {
+            font-size: 1.1rem; /* Button font size */
+            padding: 10px 20px; /* Padding around button text */
+            border-radius: 5px; /* Slightly rounded corners */
+            background-color: #8d6e63; /* Brown button background */
+            color: #fff; /* White text on button for contrast */
+        }
+
+        /* Responsive font sizes */
+        h2 {
+            font-size: 2.5rem; /* Responsive */
+        }
+
+        h5 {
+            font-size: 1.8rem;
+        }
+
+        h6 {
+            font-size: 1.4rem;
+        }
+
+        p, .btn-custom {
+            font-size: 1.1rem;
+        }
+
+        /* Media queries for smaller screens */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+            h5 {
+                font-size: 1.5rem;
+            }
+            h6 {
+                font-size: 1.2rem;
+            }
+            p, .btn-custom {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h2 {
+                font-size: 1.8rem;
+            }
+            h5 {
+                font-size: 1.4rem;
+            }
+            h6 {
+                font-size: 1rem;
+            }
+            p, .btn-custom {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Ensure images are responsive */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Responsive form elements for smaller screens */
+        @media (max-width: 576px) {
+            #contact-form .form-control, #contact-form .btn-custom {
+                width: 100%; /* Full width for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" id="nav-brand"><i class="fas fa-tools"></i> MAC Buddy</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html" id="home-link"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="signup.html" id="signup-link"><i class="fas fa-user-plus"></i> Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html" id="login-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    </li>
+                </ul>
+                <!-- Language Dropdown -->
+                <select class="form-select ms-3" id="language-select" onchange="updateLanguage()">
+                    <option value="English" selected>English</option>
+                    <option value="Hindi">हिन्दी</option>
+                </select>
+                
+            </div>
+        </div>
+    </nav>
+<div class="main2">
+    <!-- Contact Us Section -->
+    <div class="container my-2">
+        <h2 class="text-center" id="contact-title">Contact Us</h2>
+        <p class="text-center">For any queries, please fill out the form below, and our team will call you soon!</p>
+        
+        <!-- Association Image -->
+        <div class="text-center mb-3">
+            <img src="C:\Users\inspi\OneDrive\Desktop\MACBuddy\asso.jpg" alt="Surendranagar Mechanical Association" class="img-fluid" width="300px" height="300px">
+        </div>
+
+        <!-- Contact Details -->
+        <div class="text-center mb-4" style="color: #5d4037;">
+            <h5><i class="fas fa-building"></i> Surendranagar Mechanical Association</h5>
+            <p><i class="fas fa-envelope"></i> Email: contact@surendranagarmechanical.com</p>
+            <p><i class="fas fa-phone"></i> Phone: +91 12345 67890</p>
+            <p><i class="fas fa-map-marker-alt"></i> Address: 123 Mechanic Lane, Surendranagar, Gujarat</p>
+            <div>
+                <h6><i class="fas fa-share-alt"></i> Follow us on social media:</h6>
+                <a href="#" class="me-2"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#" class="me-2"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            </div>
+        </div>
+
+        <!-- Contact Form -->
+        <form id="contact-form" onsubmit="handleContactSubmit(event)">
+            <div class="mb-3">
+                <label for="contact-name" class="form-label"><i class="fas fa-user"></i> Name</label>
+                <input type="text" class="form-control" id="contact-name" required>
+            </div>
+            <div class="mb-3">
+                <label for="contact-email" class="form-label"><i class="fas fa-envelope"></i> Email</label>
+                <input type="email" class="form-control" id="contact-email" required>
+            </div>
+            <div class="mb-3">
+                <label for="contact-message" class="form-label"><i class="fas fa-comment"></i> Message</label>
+                <textarea class="form-control" id="contact-message" rows="4" required></textarea>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-custom" id="contact-submit-button">Submit</button>
+            </div>
+        </form>
+
+        <!-- Submission Message -->
+        <div id="contact-success-message" class="text-center mt-4 d-none">
+            <h4>Thank you for your message!</h4>
+            <p>We will call you soon. For immediate assistance, please call our helpline: +91 98765 43210</p>
+        </div>
+    </div>
+</div>
+    <!-- Footer -->
+    <footer class="text-center py-3" style="color: #fff;">
+        <p id="footer-text">Contact Us | Surendranagar Two-Wheeler Mechanic Association</p>
+        <p>Made with ❤️ by Urvi</p>
+    </footer>
+
+   <!-- JavaScript to handle language selection -->
+<script>
+    const translations = {
+        English: {
+            title: 'Contact Us',
+            homeLink: 'Home',
+            signupLink: 'Sign Up',
+            loginLink: 'Login',
+            nameLabel: 'Name',
+            emailLabel: 'Email',
+            messageLabel: 'Message',
+            submitButton: 'Submit',
+            successMessageTitle: 'Thank you for your message!',
+            successMessageBody: 'We will call you soon. For immediate assistance, please call our helpline: +91 98765 43210',
+            footerText: 'Contact Us | Surendranagar Two-Wheeler Mechanic Association',
+            formIntro: 'For any queries, please fill out the form below, and our team will call you soon!',
+            association: 'Surendranagar Mechanical Association',
+            emailContact: 'Email: contact@surendranagarmechanical.com',
+            phoneContact: 'Phone: +91 12345 67890',
+            addressContact: 'Address: 123 Mechanic Lane, Surendranagar, Gujarat',
+            followUs: 'Follow us on social media:'
+        },
+        Hindi: {
+            title: 'संपर्क करें',
+            homeLink: 'मुख्य पृष्ठ',
+            signupLink: 'साइन अप करें',
+            loginLink: 'लॉगिन करें',
+            nameLabel: 'नाम',
+            emailLabel: 'ईमेल',
+            messageLabel: 'संदेश',
+            submitButton: 'भेजें',
+            successMessageTitle: 'आपके संदेश के लिए धन्यवाद!',
+            successMessageBody: 'हम जल्द ही आपसे संपर्क करेंगे। तुरंत सहायता के लिए, कृपया हमारी हेल्पलाइन पर कॉल करें: +91 98765 43210',
+            footerText: 'संपर्क करें | सुरेंद्रनगर टू-व्हीलर मैकेनिक एसोसिएशन',
+            formIntro: 'किसी भी प्रश्न के लिए, कृपया नीचे दिए गए फॉर्म को भरें, और हमारी टीम आपसे जल्द ही संपर्क करेगी!',
+            association: 'सुरेंद्रनगर मैकेनिकल एसोसिएशन',
+            emailContact: 'ईमेल: contact@surendranagarmechanical.com',
+            phoneContact: 'फोन: +91 12345 67890',
+            addressContact: 'पता: 123 मैकेनिक लेन, सुरेंद्रनगर, गुजरात',
+            followUs: 'हमें सोशल मीडिया पर फॉलो करें:',
+            associationLabel: 'सुरेंद्रनगर मैकेनिकल एसोसिएशन',
+            emailLabel: 'ईमेल: contact@surendranagarmechanical.com',
+            phoneLabel: 'फोन: +91 12345 67890',
+            addressLabel: 'पता: 123 मैकेनिक लेन, सुरेंद्रनगर, गुजरात'
+        }
+    };
+
+    function updateLanguage() {
+        const language = document.getElementById('language-select').value;
+        const translation = translations[language];
+
+        // Check if translation exists
+        if (!translation) return;
+
+        // Update headings and labels
+        const contactTitle = document.getElementById('contact-title');
+        if (contactTitle) contactTitle.innerText = translation.title;
+
+        const homeLink = document.getElementById('home-link');
+        if (homeLink) homeLink.innerText = translation.homeLink;
+
+        const signupLink = document.getElementById('signup-link');
+        if (signupLink) signupLink.innerText = translation.signupLink;
+
+        const loginLink = document.getElementById('login-link');
+        if (loginLink) loginLink.innerText = translation.loginLink;
+
+        const nameLabel = document.getElementById('contact-form').querySelector('.form-label:nth-of-type(1)');
+        if (nameLabel) nameLabel.innerText = translation.nameLabel;
+
+        const emailLabel = document.getElementById('contact-form').querySelector('.form-label:nth-of-type(2)');
+        if (emailLabel) emailLabel.innerText = translation.emailLabel;
+
+        const messageLabel = document.getElementById('contact-form').querySelector('.form-label:nth-of-type(3)');
+        if (messageLabel) messageLabel.innerText = translation.messageLabel;
+
+        const submitButton = document.getElementById('contact-submit-button');
+        if (submitButton) submitButton.innerText = translation.submitButton;
+
+        const successMessageTitle = document.getElementById('contact-success-message').querySelector('h4');
+        if (successMessageTitle) successMessageTitle.innerText = translation.successMessageTitle;
+
+        const successMessageBody = document.getElementById('contact-success-message').querySelector('p');
+        if (successMessageBody) successMessageBody.innerText = translation.successMessageBody;
+
+        const footerText = document.getElementById('footer-text');
+        if (footerText) footerText.innerText = translation.footerText;
+
+        // Update form introduction and contact details
+        const introParagraph = document.querySelector('.main2 p.text-center');
+        if (introParagraph) introParagraph.innerText = translation.formIntro;
+
+        const contactDetails = document.querySelector('.text-center.mb-4');
+        if (contactDetails) {
+            const association = contactDetails.querySelector('h5');
+            if (association) association.innerText = translation.associationLabel;
+
+            const emailContact = contactDetails.querySelector('p:nth-of-type(1)');
+            if (emailContact) emailContact.innerText = translation.emailLabel;
+
+            const phoneContact = contactDetails.querySelector('p:nth-of-type(2)');
+            if (phoneContact) phoneContact.innerText = translation.phoneLabel;
+
+            const addressContact = contactDetails.querySelector('p:nth-of-type(3)');
+            if (addressContact) addressContact.innerText = translation.addressLabel;
+
+            const followUs = contactDetails.querySelector('h6');
+            if (followUs) followUs.innerText = translation.followUs;
+            
+        }
+    }
+// Handle contact form submission
+function handleContactSubmit(event) {
+    event.preventDefault(); // Prevent page reload
+
+    // Clear previous error messages
+    const errorMessages = document.querySelectorAll('.error-message');
+    errorMessages.forEach(msg => msg.remove());
+
+    const nameInput = document.getElementById('contact-name');
+    const emailInput = document.getElementById('contact-email');
+    const phoneInput = document.getElementById('contact-phone');
+    const messageInput = document.getElementById('contact-message');
+    let valid = true;
+
+    // Validate Name: must contain only alphabets
+    const namePattern = /^[A-Za-z\s]+$/; // allows letters and spaces
+    if (!namePattern.test(nameInput.value)) {
+        valid = false;
+        showError(nameInput, 'Name must contain only alphabets.');
+    }
+
+    // Validate Email: must be in correct format
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // basic email validation
+    if (!emailPattern.test(emailInput.value)) {
+        valid = false;
+        showError(emailInput, 'Please enter a valid email address.');
+    }
+
+    // Validate Phone Number: must start with 6-9 and be 10 digits long
+    const phonePattern = /^[6-9]\d{9}$/; // starts with 6-9 and followed by 9 digits
+    if (!phonePattern.test(phoneInput.value)) {
+        valid = false;
+        showError(phoneInput, 'Phone number must start with 6-9 and be 10 digits long.');
+    }
+
+    // Check for empty fields
+    if (nameInput.value.trim() === '') {
+        valid = false;
+        showError(nameInput, 'This field cannot be empty.');
+    }
+    if (emailInput.value.trim() === '') {
+        valid = false;
+        showError(emailInput, 'This field cannot be empty.');
+    }
+    if (phoneInput.value.trim() === '') {
+        valid = false;
+        showError(phoneInput, 'This field cannot be empty.');
+    }
+    if (messageInput.value.trim() === '') {
+        valid = false;
+        showError(messageInput, 'This field cannot be empty.');
+    }
+
+    // If valid, reset the form and show success message
+    if (valid) {
+        nameInput.value = '';
+        emailInput.value = '';
+        phoneInput.value = '';
+        messageInput.value = '';
+        document.getElementById('contact-success-message').classList.remove('d-none'); // Show success message
+    }
+}
+
+// Function to show error messages
+function showError(input, message) {
+    const errorMessage = document.createElement('div');
+    errorMessage.className = 'error-message text-danger'; // Bootstrap class for red text
+    errorMessage.innerText = message;
+    input.parentNode.insertBefore(errorMessage, input.nextSibling); // Insert message after the input
+}
+
+// Function to validate input in real-time
+function validateInput(input) {
+    const nameInput = document.getElementById('contact-name');
+    const emailInput = document.getElementById('contact-email');
+    const phoneInput = document.getElementById('contact-phone');
+    const messageInput = document.getElementById('contact-message');
+
+    // Clear previous error messages for this input
+    const errorMessages = input.parentNode.querySelectorAll('.error-message');
+    errorMessages.forEach(msg => msg.remove());
+
+    // Validate input based on the field
+    if (input === nameInput) {
+        const namePattern = /^[A-Za-z\s]+$/; // allows letters and spaces
+        if (!namePattern.test(input.value)) {
+            showError(input, 'Name must contain only alphabets.');
+        }
+    } else if (input === emailInput) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // basic email validation
+        if (!emailPattern.test(input.value)) {
+            showError(input, 'Please enter a valid email address.');
+        }
+    } else if (input === phoneInput) {
+        const phonePattern = /^[6-9]\d{9}$/; // starts with 6-9 and followed by 9 digits
+        if (!phonePattern.test(input.value)) {
+            showError(input, 'Phone number must start with 6-9 and be 10 digits long.');
+        }
+    } else if (input === messageInput) {
+        if (input.value.trim() === '') {
+            showError(input, 'This field cannot be empty.');
+        }
+    }
+
+    // Remove error message if the input is valid
+    if (input === nameInput && /^[A-Za-z\s]+$/.test(input.value)) {
+        const errorMessages = input.parentNode.querySelectorAll('.error-message');
+        errorMessages.forEach(msg => msg.remove());
+    }
+    if (input === emailInput && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
+        const errorMessages = input.parentNode.querySelectorAll('.error-message');
+        errorMessages.forEach(msg => msg.remove());
+    }
+    if (input === phoneInput && /^[6-9]\d{9}$/.test(input.value)) {
+        const errorMessages = input.parentNode.querySelectorAll('.error-message');
+        errorMessages.forEach(msg => msg.remove());
+    }
+    if (input === messageInput && input.value.trim() !== '') {
+        const errorMessages = input.parentNode.querySelectorAll('.error-message');
+        errorMessages.forEach(msg => msg.remove());
+    }
+}
+
+// Attach event listeners for real-time validation
+document.getElementById('contact-name').addEventListener('input', function() {
+    validateInput(this);
+});
+
+document.getElementById('contact-email').addEventListener('input', function() {
+    validateInput(this);
+});
+
+document.getElementById('contact-phone').addEventListener('input', function() {
+    validateInput(this);
+});
+
+document.getElementById('contact-message').addEventListener('input', function() {
+    validateInput(this);
+});
+
+
+        event.preventDefault(); // Prevent page reload
+        document.getElementById('contact-form').reset(); // Reset the form
+        document.getElementById('contact-success-message').classList.remove('d-none'); // Show success message
+    
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
