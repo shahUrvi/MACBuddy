@@ -150,7 +150,6 @@ footer {
             const type = field.getAttribute('type') === 'password' ? 'text' : 'password';
             field.setAttribute('type', type);
         }
-    
         function handleSignup(event) {
     event.preventDefault(); // Prevent page reload
 
@@ -167,6 +166,12 @@ footer {
     if (username === "") {
         showError('usernameError', "Username is required.");
         isValid = false;
+    } else if (!/^[a-zA-Z0-9]+$/.test(username)) {
+        showError('usernameError', "Username must contain only letters and numbers.");
+        isValid = false;
+    } else if (username.length < 3 || username.length > 15) {
+        showError('usernameError', "Username must be between 3 and 15 characters.");
+        isValid = false;
     }
 
     // Validate Email
@@ -182,8 +187,20 @@ footer {
     if (password === "") {
         showError('passwordError', "Password is required.");
         isValid = false;
-    } else if (password.length < 6) {
-        showError('passwordError', "Password must be at least 6 characters.");
+    } else if (password.length < 8) {
+        showError('passwordError', "Password must be at least 8 characters long.");
+        isValid = false;
+    } else if (!/[A-Z]/.test(password)) {
+        showError('passwordError', "Password must contain at least one uppercase letter.");
+        isValid = false;
+    } else if (!/[a-z]/.test(password)) {
+        showError('passwordError', "Password must contain at least one lowercase letter.");
+        isValid = false;
+    } else if (!/[0-9]/.test(password)) {
+        showError('passwordError', "Password must contain at least one number.");
+        isValid = false;
+    } else if (!/[!@#$%^&*]/.test(password)) {
+        showError('passwordError', "Password must contain at least one special character.");
         isValid = false;
     }
 

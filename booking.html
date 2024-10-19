@@ -193,7 +193,6 @@
         <p>Made with ❤️ by Urvi</p>
     </footer>
     <script>
-       
         // Generalized validation function
         function validateField(field, pattern, message) {
             const value = field.value.trim();
@@ -204,88 +203,77 @@
             setError(field);
             return true;
         }
-          function setError(field, message = "") {
-        const errorMsg = field.nextElementSibling;
-        if (message) {
-            if (!errorMsg) {
-                const errorElement = document.createElement("div");
-                errorElement.className = "text-danger mt-1";
-                errorElement.textContent = message;
-                field.after(errorElement);
-            } else {
-                errorMsg.textContent = message;
+    
+        function setError(field, message = "") {
+            const errorMsg = field.nextElementSibling;
+            if (message) {
+                if (!errorMsg) {
+                    const errorElement = document.createElement("div");
+                    errorElement.className = "text-danger mt-1";
+                    errorElement.textContent = message;
+                    field.after(errorElement);
+                } else {
+                    errorMsg.textContent = message;
+                }
+            } else if (errorMsg) {
+                errorMsg.remove();
             }
-        } else if (errorMsg) {
-            errorMsg.remove();
         }
-    }
-
-    // Generalized validation function
-    function validateField(field, pattern, message) {
-        const value = field.value.trim();
-        if (!pattern.test(value)) {
-            setError(field, message);
-            return false;
+    
+        // Function to check for empty fields
+        function validateRequiredFields() {
+            const requiredFields = [
+                { field: document.getElementById("name"), message: "Please fill out your name." },
+                { field: document.getElementById("phone"), message: "Please fill out your phone number." },
+                { field: document.getElementById("area"), message: "Please select an area." },
+                { field: document.getElementById("mechanic"), message: "Please select a mechanic." },
+                { field: document.getElementById("service"), message: "Please select a service." },
+                { field: document.getElementById("vehicle"), message: "Please select a vehicle." },
+                { field: document.getElementById("vehicle-number"), message: "Please fill out your vehicle number." },
+                { field: document.getElementById("date"), message: "Please select a preferred date." },
+            ];
+    
+            let isValid = true;
+    
+            requiredFields.forEach(({ field, message }) => {
+                if (field.value.trim() === "") {
+                    setError(field, message);
+                    isValid = false;
+                } else {
+                    setError(field);
+                }
+            });
+    
+            return isValid;
         }
-        setError(field);
-        return true;
-    }
-
-    // Function to check for empty fields
-    function validateRequiredFields() {
-        const requiredFields = [
-            { field: document.getElementById("name"), message: "Please fill out your name." },
-            { field: document.getElementById("phone"), message: "Please fill out your phone number." },
-            { field: document.getElementById("area"), message: "Please select an area." },
-            { field: document.getElementById("mechanic"), message: "Please select a mechanic." },
-            { field: document.getElementById("service"), message: "Please select a service." },
-            { field: document.getElementById("vehicle"), message: "Please select a vehicle." },
-            { field: document.getElementById("vehicle-number"), message: "Please fill out your vehicle number." },
-            { field: document.getElementById("date"), message: "Please select a preferred date." },
-        ];
-
-        let isValid = true;
-
-        requiredFields.forEach(({ field, message }) => {
-            if (field.value.trim() === "") {
-                setError(field, message);
-                isValid = false;
-            } else {
-                setError(field);
+    
+        // Validate all fields on form submission
+        document.getElementById("booking-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+    
+            // Run all validations
+            const isValid =
+                validateField(document.getElementById("name"), validations.name.pattern, validations.name.message) &&
+                validateField(document.getElementById("phone"), validations.phone.pattern, validations.phone.message) &&
+                validateSelectField("area", "Please select an area.") &&
+                validateSelectField("mechanic", "Please select a mechanic.") &&
+                validateSelectField("service", "Please select a service.") &&
+                validateSelectField("vehicle", "Please select a vehicle.") &&
+                validateField(document.getElementById("vehicle-number"), validations.vehicleNumber.pattern, validations.vehicleNumber.message) &&
+                validateField(document.getElementById("date"), validations.date.pattern, validations.date.message) &&
+                validateRequiredFields(); // Add required fields validation
+    
+            // Check if there are any error messages displayed
+            if (isValid) {
+                const name = document.getElementById("name").value;
+                document.getElementById("confirmation-message").textContent = `Thank you, ${name}! The mechanic will contact you soon to confirm your booking.`;
+                document.getElementById("confirmation").style.display = "block"; // Show confirmation
+                document.getElementById("invoice-button").style.display = "inline-block";
+                document.getElementById("dashboard-button").style.display = "inline-block";
+                this.reset(); // Reset form after submission
             }
         });
-
-        return isValid;
-    }
-
-    // Validate all fields on form submission
-    document.getElementById("booking-form").addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent form submission
-
-        // Run all validations
-        const isValid =
-            validateField(document.getElementById("name"), validations.name.pattern, validations.name.message) &&
-            validateField(document.getElementById("phone"), validations.phone.pattern, validations.phone.message) &&
-            validateSelectField("area", "Please select an area.") &&
-            validateSelectField("mechanic", "Please select a mechanic.") &&
-            validateSelectField("service", "Please select a service.") &&
-            validateSelectField("vehicle", "Please select a vehicle.") &&
-            validateField(document.getElementById("vehicle-number"), validations.vehicleNumber.pattern, validations.vehicleNumber.message) &&
-            validateField(document.getElementById("date"), validations.date.pattern, validations.date.message) &&
-            validateRequiredFields(); // Add required fields validation
-
-        // Check if there are any error messages displayed
-        if (isValid) {
-            const name = document.getElementById("name").value;
-            document.getElementById("confirmation-message").textContent = `Thank you, ${name}! The mechanic will contact you soon to confirm your booking.`;
-            document.getElementById("confirmation").style.display = "block";
-            document.getElementById("invoice-button").style.display = "inline-block";
-            document.getElementById("dashboard-button").style.display = "inline-block";
-            this.reset(); // Reset form after submission
-        }
-    });
-
-
+    
         // Define patterns and messages
         const validations = {
             name: {
@@ -316,40 +304,16 @@
             const field = document.getElementById(fieldId);
             if (field.value === "") {
                 setError(field, message);
+                return false; // Return false to indicate the validation failure
             } else {
                 setError(field);
+                return true; // Return true for successful validation
             }
         }
     
         // Add event listeners for select fields
         ["area", "mechanic", "service", "vehicle"].forEach(fieldId => {
             document.getElementById(fieldId).addEventListener("change", () => validateSelectField(fieldId, `Please select a ${fieldId}.`));
-        });
-    
-        // Validate all fields on form submission
-        document.getElementById("booking-form").addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent form submission
-    
-            // Run all validations
-            const isValid =
-                validateField(document.getElementById("name"), validations.name.pattern, validations.name.message) &&
-                validateField(document.getElementById("phone"), validations.phone.pattern, validations.phone.message) &&
-                validateSelectField("area", "Please select an area.") &&
-                validateSelectField("mechanic", "Please select a mechanic.") &&
-                validateSelectField("service", "Please select a service.") &&
-                validateSelectField("vehicle", "Please select a vehicle.") &&
-                validateField(document.getElementById("vehicle-number"), validations.vehicleNumber.pattern, validations.vehicleNumber.message) &&
-                validateField(document.getElementById("date"), validations.date.pattern, validations.date.message);
-    
-            // Check if there are any error messages displayed
-            if (isValid) {
-                const name = document.getElementById("name").value;
-                document.getElementById("confirmation-message").textContent = `Thank you, ${name}! The mechanic will contact you soon to confirm your booking.`;
-                document.getElementById("confirmation").style.display = "block";
-                document.getElementById("invoice-button").style.display = "inline-block";
-                document.getElementById("dashboard-button").style.display = "inline-block";
-                this.reset(); // Reset form after submission
-            }
         });
     
         // Function to simulate viewing the invoice
@@ -452,16 +416,8 @@
             document.getElementById("dashboard-link").textContent = texts.dashboardLink;
             document.getElementById("logout-link").textContent = texts.logoutLink;
         }
-    
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('bookingForm'); // Ensure your form has the id 'bookingForm'
-            form.addEventListener('submit', validateForm); // Add event listener for form submission
-        });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-    </html>
-    
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

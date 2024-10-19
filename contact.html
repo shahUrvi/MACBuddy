@@ -199,6 +199,24 @@
         <p id="footer-text">Contact Us | Surendranagar Two-Wheeler Mechanic Association</p>
         <p>Made with ❤️ by Urvi</p>
     </footer>
+    <!-- Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactModalLabel">Thank You!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                The mechanic will contact you soon.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
    <!-- JavaScript to handle language selection -->
 <script>
@@ -311,7 +329,7 @@
             
         }
     }
-// Handle contact form submission
+// // Handle contact form submission
 function handleContactSubmit(event) {
     event.preventDefault(); // Prevent page reload
 
@@ -321,29 +339,21 @@ function handleContactSubmit(event) {
 
     const nameInput = document.getElementById('contact-name');
     const emailInput = document.getElementById('contact-email');
-    const phoneInput = document.getElementById('contact-phone');
     const messageInput = document.getElementById('contact-message');
     let valid = true;
 
-    // Validate Name: must contain only alphabets
+    // Validate Name
     const namePattern = /^[A-Za-z\s]+$/; // allows letters and spaces
     if (!namePattern.test(nameInput.value)) {
         valid = false;
         showError(nameInput, 'Name must contain only alphabets.');
     }
 
-    // Validate Email: must be in correct format
+    // Validate Email
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // basic email validation
     if (!emailPattern.test(emailInput.value)) {
         valid = false;
         showError(emailInput, 'Please enter a valid email address.');
-    }
-
-    // Validate Phone Number: must start with 6-9 and be 10 digits long
-    const phonePattern = /^[6-9]\d{9}$/; // starts with 6-9 and followed by 9 digits
-    if (!phonePattern.test(phoneInput.value)) {
-        valid = false;
-        showError(phoneInput, 'Phone number must start with 6-9 and be 10 digits long.');
     }
 
     // Check for empty fields
@@ -355,22 +365,24 @@ function handleContactSubmit(event) {
         valid = false;
         showError(emailInput, 'This field cannot be empty.');
     }
-    if (phoneInput.value.trim() === '') {
-        valid = false;
-        showError(phoneInput, 'This field cannot be empty.');
-    }
     if (messageInput.value.trim() === '') {
         valid = false;
         showError(messageInput, 'This field cannot be empty.');
     }
 
-    // If valid, reset the form and show success message
     if (valid) {
+        // Clear the form
         nameInput.value = '';
         emailInput.value = '';
-        phoneInput.value = '';
         messageInput.value = '';
-        document.getElementById('contact-success-message').classList.remove('d-none'); // Show success message
+
+        // Hide the form and show the success message
+        document.getElementById('contact-form').classList.add('d-none');
+        document.getElementById('contact-success-message').classList.remove('d-none');
+
+        // Show the modal
+        const contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
+        contactModal.show();
     }
 }
 
@@ -386,7 +398,6 @@ function showError(input, message) {
 function validateInput(input) {
     const nameInput = document.getElementById('contact-name');
     const emailInput = document.getElementById('contact-email');
-    const phoneInput = document.getElementById('contact-phone');
     const messageInput = document.getElementById('contact-message');
 
     // Clear previous error messages for this input
@@ -404,11 +415,6 @@ function validateInput(input) {
         if (!emailPattern.test(input.value)) {
             showError(input, 'Please enter a valid email address.');
         }
-    } else if (input === phoneInput) {
-        const phonePattern = /^[6-9]\d{9}$/; // starts with 6-9 and followed by 9 digits
-        if (!phonePattern.test(input.value)) {
-            showError(input, 'Phone number must start with 6-9 and be 10 digits long.');
-        }
     } else if (input === messageInput) {
         if (input.value.trim() === '') {
             showError(input, 'This field cannot be empty.');
@@ -421,10 +427,6 @@ function validateInput(input) {
         errorMessages.forEach(msg => msg.remove());
     }
     if (input === emailInput && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
-        const errorMessages = input.parentNode.querySelectorAll('.error-message');
-        errorMessages.forEach(msg => msg.remove());
-    }
-    if (input === phoneInput && /^[6-9]\d{9}$/.test(input.value)) {
         const errorMessages = input.parentNode.querySelectorAll('.error-message');
         errorMessages.forEach(msg => msg.remove());
     }
@@ -443,13 +445,10 @@ document.getElementById('contact-email').addEventListener('input', function() {
     validateInput(this);
 });
 
-document.getElementById('contact-phone').addEventListener('input', function() {
-    validateInput(this);
-});
-
 document.getElementById('contact-message').addEventListener('input', function() {
     validateInput(this);
 });
+
 
 
         event.preventDefault(); // Prevent page reload
